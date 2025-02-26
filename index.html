@@ -10,8 +10,6 @@
             margin: 0;
             padding: 0;
             background-color: #f0e6ff;
-            background-image: radial-gradient(#d4bfff 2px, transparent 2px);
-            background-size: 30px 30px;
             font-family: 'Raleway', sans-serif;
             color: #333;
         }
@@ -23,31 +21,23 @@
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             overflow: hidden;
-            position: relative;
         }
         
         .page {
-            padding: 30px;
+            padding: 40px;
             background-color: white;
-            min-height: 500px;
             display: none;
-            animation: fadeIn 0.5s ease;
         }
         
         .page.active {
             display: block;
         }
         
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
         .cover {
             background: linear-gradient(135deg, #6b4c8f 0%, #9370DB 100%);
             color: white;
             text-align: center;
-            padding: 50px 30px;
+            padding: 60px 40px;
         }
         
         .title {
@@ -60,7 +50,7 @@
         .subtitle {
             font-size: 18px;
             font-style: italic;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
         
         h2 {
@@ -72,7 +62,7 @@
         }
         
         p {
-            font-size: 16px;
+            font-size: 18px;
             line-height: 1.7;
             margin-bottom: 20px;
         }
@@ -101,18 +91,16 @@
         .page-number {
             text-align: center;
             color: #999;
-            font-size: 14px;
-            margin-top: 20px;
+            font-size: 16px;
+            margin-top: 40px;
             font-family: 'Bubblegum Sans', cursive;
         }
         
         .navigation {
             display: flex;
             justify-content: space-between;
-            padding: 10px 20px;
+            padding: 15px 40px;
             background-color: #f0e6ff;
-            position: sticky;
-            bottom: 0;
             border-top: 1px solid #d4bfff;
         }
         
@@ -120,10 +108,11 @@
             background-color: #6b4c8f;
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 12px 24px;
             border-radius: 5px;
             cursor: pointer;
             font-family: 'Bubblegum Sans', cursive;
+            font-size: 18px;
             transition: all 0.3s ease;
         }
         
@@ -141,66 +130,9 @@
             display: flex;
             align-items: center;
             font-family: 'Bubblegum Sans', cursive;
+            font-size: 18px;
         }
-
-        .magical-element {
-            position: absolute;
-            pointer-events: none;
-            opacity: 0;
-            animation: sparkle 3s ease-in-out;
-        }
-
-        @keyframes sparkle {
-            0% { opacity: 0; transform: scale(0.5) rotate(0deg); }
-            50% { opacity: 1; transform: scale(1) rotate(180deg); }
-            100% { opacity: 0; transform: scale(0.5) rotate(360deg); }
-        }
-
-        .placeholder-image {
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #f5f0ff;
-            border-radius: 8px;
-            margin: 20px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .placeholder-icon {
-            font-size: 40px;
-            color: #6b4c8f;
-        }
-
-        /* Simple thematic illustrations to replace missing images */
-        .illustration {
-            width: 100%;
-            height: 200px;
-            margin: 20px 0;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .illustration-1 { background-color: #e6f7ff; } /* Train station */
-        .illustration-2 { background-color: #f5f0ff; } /* Gift closet */
-        .illustration-3 { background-color: #f5f0ff; } /* Magical wardrobe */
-        .illustration-4 { background-color: #e6f7ff; } /* Amazon box */
-        .illustration-5 { background-color: #fff0f0; } /* Vodka and carrot juice */
-        .illustration-6 { background-color: #f0fff0; } /* Man with wardrobe */
-        .illustration-7 { background-color: #f9f0e6; } /* Halloween robe */
-        .illustration-8 { background-color: #fff0f5; } /* Canadian princess */
-        .illustration-9 { background-color: #f0f8ff; } /* Ghost and gifts */
-        .illustration-10 { background-color: #fff8e8; } /* Dancing hot dogs */
-        .illustration-11 { background-color: #e6f7ff; } /* Girl at train station */
-        .illustration-12 { background-color: #f0f8ff; } /* Train arriving */
-        .illustration-13 { background-color: #ffe8e8; } /* Hot dog parade */
-        .illustration-14 { background-color: #f0fff0; } /* Epilogue */
-
+        
         /* Responsive design */
         @media (max-width: 768px) {
             .book-container {
@@ -210,7 +142,6 @@
             
             .page {
                 padding: 20px;
-                min-height: 300px;
             }
             
             .title {
@@ -222,8 +153,8 @@
             }
             
             .nav-button {
-                padding: 8px 15px;
-                font-size: 14px;
+                padding: 10px 15px;
+                font-size: 16px;
             }
         }
     </style>
@@ -234,15 +165,7 @@
         <div class="page cover active" id="page-cover">
             <div class="title">The Vodka, The Carrot Juice, and The Gift Wardrobe</div>
             <div class="subtitle">A Whimsical Tale of Enchanted Robes, Mysterious Gifts, and the Curious Case of a Wardrobe Full of Surprises</div>
-            <div class="illustration" style="background-color: #8a65c9; height: 300px;">
-                <div style="position: absolute; width: 100px; height: 150px; background-color: #5a9367; bottom: 50px; left: 50%; transform: translateX(-50%);"></div>
-                <div style="position: absolute; width: 50px; height: 50px; background-color: #fff; opacity: 0.9; border-radius: 50%; top: 50px; left: 30%;"></div>
-                <div style="position: absolute; width: 20px; height: 60px; background-color: #f5f5f5; bottom: 50px; left: 30%; border-radius: 3px;">
-                    <div style="position: absolute; width: 100%; text-align: center; font-size: 8px; color: #333; top: 20px;">VODKA</div>
-                </div>
-                <div style="position: absolute; width: 30px; height: 8px; background-color: #f9a602; bottom: 80px; right: 40%; border-radius: 4px;"></div>
-                <div style="position: absolute; width: 30px; height: 8px; background-color: #ff5252; bottom: 80px; right: 40%; border-radius: 4px; transform: translateY(4px);"></div>
-            </div>
+            <img class="page-image" src="https://imgur.com/G8YRYhY.png" alt="Book cover - The Vodka, the Carrot Juice, and the Gift Wardrobe">
         </div>
         
         <!-- Dedication -->
@@ -273,13 +196,7 @@
             
             <p>She clutched her bag tightly, staring at the tracks. She had been told to wait here, but deep down, she knew no one was coming.</p>
             
-            <div class="illustration illustration-1">
-                <div style="position: absolute; width: 100%; height: 20px; background-color: #777; bottom: 0;"></div>
-                <div style="position: absolute; width: 80%; height: 5px; background-color: #333; bottom: 20px; left: 10%;"></div>
-                <div style="position: absolute; width: 30px; height: 50px; background-color: #9370DB; opacity: 0.8; bottom: 20px; left: 20%; border-radius: 10px 10px 0 0;"></div>
-                <div style="position: absolute; width: 100px; height: 30px; background-color: #4682b4; bottom: 25px; right: 20%; border-radius: 5px;"></div>
-                <div style="position: absolute; width: 80px; height: 10px; background-color: #f0f0f0; bottom: 25px; left: 30%; text-align: center; font-size: 8px;">bench</div>
-            </div>
+            <img class="page-image" src="https://imgur.com/HmUB5wH.png" alt="Girl waiting at train station">
             
             <div class="page-number">1</div>
         </div>
@@ -290,15 +207,7 @@
             
             <p>A children's book meant for ages 4-8? A Halloween robe from a failed romance? Rick's collection of second-hand gifts grew with each relationship.</p>
             
-            <div class="illustration illustration-2">
-                <div style="position: absolute; width: 100px; height: 150px; background-color: #5a9367; top: 25px; left: 50%; transform: translateX(-50%);"></div>
-                <div style="position: absolute; width: 80px; height: 130px; background-color: #7aa688; top: 35px; left: 50%; transform: translateX(-50%);"></div>
-                <div style="position: absolute; width: 20px; height: 20px; background-color: #f9a602; top: 45px; left: 45%;"></div>
-                <div style="position: absolute; width: 20px; height: 20px; background-color: #ff5252; top: 75px; left: 43%;"></div>
-                <div style="position: absolute; width: 20px; height: 20px; background-color: #4682b4; top: 105px; left: 47%;"></div>
-                <div style="position: absolute; width: 30px; height: 50px; background-color: #9370DB; opacity: 0.8; bottom: 20px; left: 20%; border-radius: 10px 10px 0 0;"></div>
-                <div style="position: absolute; font-size: 12px; color: #333; top: 10px; width: 100%; text-align: center;">The Gift Closet</div>
-            </div>
+            <img class="page-image" src="https://imgur.com/shaM3wX.png" alt="The Gift Closet with girl and glowing wardrobe">
             
             <div class="page-number">2</div>
         </div>
@@ -309,17 +218,7 @@
             
             <p>Some had been carefully chosen. Others... repurposed.</p>
             
-            <div class="illustration illustration-3">
-                <div style="position: absolute; width: 100px; height: 150px; background-color: #7aa688; opacity: 0.9; top: 25px; left: 50%; transform: translateX(-50%);"></div>
-                <div style="position: absolute; width: 80px; height: 130px; background-color: #fff; opacity: 0.7; top: 35px; left: 50%; transform: translateX(-50%);"></div>
-                <div style="position: absolute; width: 15px; height: 30px; background-color: #f9a602; opacity: 0.8; top: 45px; left: 45%;"></div>
-                <div style="position: absolute; width: 15px; height: 30px; background-color: #ff5252; opacity: 0.8; top: 45px; left: 60%;"></div>
-                <div style="position: absolute; width: 50px; height: 70px; background-color: #fff; right: 20%; top: 40%; border-radius: 50% 50% 0 0;"></div>
-                <div style="position: absolute; width: 6px; height: 6px; background-color: #333; right: 32%; top: 50%;"></div>
-                <div style="position: absolute; width: 6px; height: 6px; background-color: #333; right: 22%; top: 50%;"></div>
-                <div style="position: absolute; width: 10px; height: 10px; background-color: #f9d71c; top: 30px; left: 30%; border-radius: 50%; opacity: 0.8;"></div>
-                <div style="position: absolute; width: 10px; height: 10px; background-color: #f9d71c; top: 50px; right: 30%; border-radius: 50%; opacity: 0.8;"></div>
-            </div>
+            <img class="page-image" src="https://imgur.com/2It0iQk.png" alt="Magical wardrobe with bottles and ghost">
             
             <div class="page-number">3</div>
         </div>
@@ -332,14 +231,7 @@
             
             <p>But when she opened it, inside was not a grand romantic gesture, but a half-hearted attempt wrapped in Amazon packaging, hastily selected from Rick's collection.</p>
             
-            <div class="illustration illustration-4">
-                <div style="position: absolute; width: 80px; height: 60px; background-color: #f9a602; top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
-                <div style="position: absolute; width: 40px; height: 30px; background-color: #f9d71c; opacity: 0.8; top: 40%; left: 50%; transform: translate(-50%, -50%);"></div>
-                <div style="position: absolute; width: 30px; height: 50px; background-color: #9370DB; opacity: 0.8; bottom: 20px; left: 20%; border-radius: 10px 10px 0 0;"></div>
-                <div style="position: absolute; width: 20px; height: 20px; background-color: #ff5252; opacity: 0.7; top: 30%; left: 30%; border-radius: 50%; animation: float 3s infinite ease-in-out;"></div>
-                <div style="position: absolute; width: 15px; height: 15px; background-color: #4682b4; opacity: 0.7; top: 25%; right: 30%; animation: float 2.5s infinite ease-in-out;"></div>
-                <div style="position: absolute; font-size: 16px; color: #333; top: 50%; left: 50%; transform: translate(-50%, -50%);">AMAZON</div>
-            </div>
+            <img class="page-image" src="https://imgur.com/QpGlQMS.png" alt="Girl with magical Amazon box">
             
             <div class="page-number">4</div>
         </div>
@@ -352,16 +244,7 @@
             
             <p>She stared at the choices, wondering if this was a metaphor for their entire relationship.</p>
             
-            <div class="illustration illustration-5">
-                <div style="position: absolute; width: 120px; height: 20px; background-color: #d88c02; border-radius: 50%; top: 60%; left: 50%; transform: translate(-50%, -50%);"></div>
-                <div style="position: absolute; width: 20px; height: 40px; background-color: #f5f5f5; opacity: 0.8; top: 40%; left: 40%; transform: translateX(-50%);"></div>
-                <div style="position: absolute; width: 10px; height: 10px; background-color: #f5f5f5; opacity: 0.8; top: 30%; left: 40%; transform: translateX(-50%);"></div>
-                <div style="position: absolute; font-size: 8px; color: #333; top: 45%; left: 40%; transform: translateX(-50%);">VODKA</div>
-                <div style="position: absolute; width: 8px; height: 40px; background-color: #ff5252; top: 40%; left: 60%; transform: translateX(-50%);"></div>
-                <div style="position: absolute; width: 20px; height: 20px; background-color: #4CAF50; top: 30%; left: 60%; transform: translateX(-50%); clip-path: polygon(50% 0%, 0% 100%, 100% 100%);"></div>
-                <div style="position: absolute; width: 30px; height: 50px; background-color: #ff8f80; opacity: 0.8; bottom: 20px; right: 20%; border-radius: 10px 10px 0 0;"></div>
-                <div style="position: absolute; font-size: 20px; color: #333; top: 40%; right: 25%;">?</div>
-            </div>
+            <img class="page-image" src="https://imgur.com/nU4jXh4.png" alt="Vodka and carrot juice with confused girl">
             
             <div class="page-number">5</div>
         </div>
@@ -372,14 +255,7 @@
             
             <p>She sipped the drink, the strange combination of flavors lingering on her tongue, and wondered: Was this a gift? Or just something given?</p>
             
-            <div class="illustration illustration-6">
-                <div style="position: absolute; width: 100px; height: 130px; background-color: #5a9367; top: 35px; right: 30%;"></div>
-                <div style="position: absolute; width: 80px; height: 110px; background-color: #7aa688; top: 45px; right: 30%; margin-left: 10px;"></div>
-                <div style="position: absolute; width: 30px; height: 50px; background-color: #333; opacity: 0.8; bottom: 50px; left: 30%; border-radius: 10px 10px 0 0;"></div>
-                <div style="position: absolute; width: 20px; height: 40px; background-color: #ff5252; opacity: 0.7; top: 40%; left: 20%;"></div>
-                <div style="position: absolute; width: 30px; height: 10px; background-color: #f9a602; top: 40%; right: 35%;"></div>
-                <div style="position: absolute; width: 30px; height: 5px; background-color: #ff5252; top: 40%; right: 35%; transform: translateY(2.5px);"></div>
-            </div>
+            <img class="page-image" src="https://imgur.com/6Adf3Xz.png" alt="Man with gift wardrobe pouring carrot juice">
             
             <div class="page-number">6</div>
         </div>
@@ -392,14 +268,7 @@
             
             <p>Had it, though? Or had it once wrapped around someone else, gifted in another moment of fleeting affection?</p>
             
-            <div class="illustration illustration-7">
-                <div style="position: absolute; width: 0; height: 0; border-left: 50px solid transparent; border-right: 50px solid transparent; border-bottom: 100px solid #333; top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
-                <div style="position: absolute; width: 30px; height: 50px; background-color: #ff8f80; opacity: 0.8; bottom: 20px; left: 20%; border-radius: 10px 10px 0 0;"></div>
-                <div style="position: absolute; width: 30px; height: 50px; background-color: #f9a602; opacity: 0.8; bottom: 20px; right: 20%; border-radius: 10px 10px 0 0;"></div>
-                <div style="position: absolute; font-size: 20px; color: #333; top: 30%; left: 25%;">?</div>
-                <div style="position: absolute; font-size: 20px; color: #333; top: 30%; right: 25%;">?</div>
-                <div style="position: absolute; font-size: 12px; color: #333; top: 10px; width: 100%; text-align: center;">The Traveling Halloween Robe?</div>
-            </div>
+            <img class="page-image" src="https://imgur.com/5W6fWXR.png" alt="The Traveling Halloween Robe">
             
             <div class="page-number">7</div>
         </div>
@@ -410,15 +279,7 @@
             
             <p>One day, a beautiful princess from Canada appeared, dazzling the kingdom with her charm. Unlike the girl, the Canadian princess was untouched by Rick's peculiar gift-giving habits.</p>
             
-            <div class="illustration illustration-8">
-                <div style="position: absolute; width: 0; height: 0; border-left: 40px solid transparent; border-right: 40px solid transparent; border-bottom: 80px solid #d4bfff; top: 30%; right: 30%;"></div>
-                <div style="position: absolute; width: 40px; height: 40px; background-color: #f9d71c; top: 20%; right: 35%; border-radius: 50%;"></div>
-                <div style="position: absolute; width: 30px; height: 50px; background-color: #ff8f80; opacity: 0.8; bottom: 20px; left: 30%; border-radius: 10px 10px 0 0;"></div>
-                <div style="position: absolute; width: 30px; height: 15px; background-color: #ff5252; bottom: 70px; left: 30%;"></div>
-                <div style="position: absolute; font-size: 12px; color: #333; top: 30%; left: 50%; transform: translateX(-50%);">Canadian Princess</div>
-                <div style="position: absolute; width: 20px; height: 20px; background-color: #f9d71c; opacity: 0.8; top: 20%; left: 20%; border-radius: 50%; animation: float 3s infinite ease-in-out;"></div>
-                <div style="position: absolute; width: 15px; height: 15px; background-color: #f9d71c; opacity: 0.8; top: 30%; right: 20%; border-radius: 50%; animation: float 2.5s infinite ease-in-out;"></div>
-            </div>
+            <img class="page-image" src="https://imgur.com/bHNTG4h.png" alt="Canadian princess with castle">
             
             <div class="page-number">8</div>
         </div>
@@ -431,15 +292,7 @@
             
             <p>And in that moment, the gifts that once held meaning for the girl felt different.</p>
             
-            <div class="illustration illustration-9">
-                <div style="position: absolute; width: 50px; height: 70px; background-color: #fff; left: 50%; top: 40%; transform: translateX(-50%); border-radius: 25px 25px 0 0;"></div>
-                <div style="position: absolute; width: 6px; height: 6px; background-color: #333; left: 45%; top: 50%;"></div>
-                <div style="position: absolute; width: 6px; height: 6px; background-color: #333; left: 55%; top: 50%;"></div>
-                <div style="position: absolute; width: 30px; height: 50px; background-color: #9370DB; opacity: 0.8; bottom: 20px; left: 20%; border-radius: 10px 10px 0 0;"></div>
-                <div style="position: absolute; width: 30px; height: 50px; background-color: #f9a602; opacity: 0.8; bottom: 20px; right: 20%; border-radius: 10px 10px 0 0;"></div>
-                <div style="position: absolute; width: 20px; height: 20px; background-color: #f9d71c; opacity: 0.8; top: 20%; left: 30%; border-radius: 50%; animation: float 3s infinite ease-in-out;"></div>
-                <div style="position: absolute; width: 20px; height: 20px; background-color: #f9d71c; opacity: 0.8; top: 30%; right: 30%; border-radius: 50%; animation: float 2.5s infinite ease-in-out;"></div>
-            </div>
+            <img class="page-image" src="https://imgur.com/TDdfY9I.png" alt="Ghostly figure with children and pumpkins">
             
             <div class="page-number">9</div>
         </div>
@@ -452,9 +305,152 @@
             
             <p>Yet, deep down, she wondered—was it really?</p>
             
-            <div class="illustration illustration-10">
-                <div style="position: absolute; width: 200px; height: 30px; background-color: #fff; top: 30%; left: 50%; transform: translate(-50%, -50%); border-radius: 15px; border: 2px solid #ff5252; display: flex; align-items: center; justify-content: center;">
-                    <span style="font-family: 'Bubblegum Sans', cursive; color: #333; font-size: 16px;">It's the Thought That Counts!</span>
-                </div>
-                <div style="position: absolute; width: 30px; height: 10px; background-color: #f9a602; top: 60%; left: 30%;">
-                    <div style="position: absolute; width: 30px; height: 5px; background-color: #ff5252; top: 0; left: 0; transform: translateY(2.5px);
+            <img class="page-image" src="https://imgur.com/petpleL.png" alt="Dancing hot dogs with Its the Thought That Counts banner">
+            
+            <div class="page-number">10</div>
+        </div>
+        
+        <!-- Page 11 -->
+        <div class="page" id="page-13">
+            <p>The girl, realizing her worth, knew she deserved more than recycled magic.</p>
+            
+            <p>So there she sat at the train station, waiting for Rick who had promised to see her off. The minutes ticked by, turning into hours.</p>
+            
+            <p>She had spent so much time hoping for love when all she really needed was to leave—with or without a proper goodbye.</p>
+            
+            <img class="page-image" src="https://imgur.com/HmUB5wH.png" alt="The Great Escape - girl at train station">
+            
+            <div class="page-number">11</div>
+        </div>
+        
+        <!-- Page 12 -->
+        <div class="page" id="page-14">
+            <p>In the distance, a train appeared. Rick was nowhere to be seen.</p>
+            
+            <p>She closed her eyes, took a deep breath, and stepped forward into a world of her own making.</p>
+            
+            <p>As she boarded the train alone, the weight of the past slipped from her shoulders like a cloak she no longer needed.</p>
+            
+            <img class="page-image" src="https://imgur.com/In397a7.png" alt="Train arriving at station">
+            
+            <div class="page-number">12</div>
+        </div>
+        
+        <!-- Page 13 -->
+        <div class="page" id="page-15">
+            <p>In her imagination, a parade of hot dogs waved tiny flags that said, "You Did It."</p>
+            
+            <p>And for the first time in a long time, she knew she had.</p>
+            
+            <img class="page-image" src="https://imgur.com/TDdfY9I.png" alt="Hot dog parade finale with You Did It signs">
+            
+            <div class="page-number">13</div>
+        </div>
+        
+        <!-- Epilogue -->
+        <div class="page" id="page-16">
+            <h2>Epilogue: A Life Well Lived</h2>
+            
+            <p>Later, she sipped a glass of wine, her cat lounging nearby.</p>
+            
+            <p>She thought about the Canadian princess, wondering if she too would eventually discover the true nature of Rick's gift wardrobe.</p>
+            
+            <p>On the table, a postcard she had written to herself read: "We Knew You'd Make It."</p>
+            
+            <p>And for the first time, she truly believed it.</p>
+            
+            <img class="page-image" src="https://imgur.com/petpleL.png" alt="Girl happy in new life with cat and wine">
+            
+            <p><strong>The End</strong></p>
+            
+            <div class="page-number">14</div>
+        </div>
+        
+        <!-- Navigation -->
+        <div class="navigation">
+            <button class="nav-button" id="prev-button">Previous</button>
+            <div class="page-indicator">Page <span id="current-page">1</span> of <span id="total-pages">16</span></div>
+            <button class="nav-button" id="next-button">Next</button>
+        </div>
+    </div>
+
+    <script>
+        // Very simple page navigation logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const pages = document.querySelectorAll('.page');
+            const prevButton = document.getElementById('prev-button');
+            const nextButton = document.getElementById('next-button');
+            const currentPageSpan = document.getElementById('current-page');
+            let currentPageIndex = 0;
+            
+            // Initialize
+            updateButtonStates();
+            
+            // Previous button click
+            prevButton.addEventListener('click', function() {
+                if (currentPageIndex > 0) {
+                    pages[currentPageIndex].classList.remove('active');
+                    currentPageIndex--;
+                    pages[currentPageIndex].classList.add('active');
+                    updateButtonStates();
+                }
+            });
+            
+            // Next button click
+            nextButton.addEventListener('click', function() {
+                if (currentPageIndex < pages.length - 1) {
+                    pages[currentPageIndex].classList.remove('active');
+                    currentPageIndex++;
+                    pages[currentPageIndex].classList.add('active');
+                    updateButtonStates();
+                }
+            });
+            
+            // Update buttons enabled/disabled state
+            function updateButtonStates() {
+                prevButton.disabled = currentPageIndex === 0;
+                nextButton.disabled = currentPageIndex === pages.length - 1;
+                currentPageSpan.textContent = currentPageIndex + 1;
+            }
+            
+            // Add keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowLeft') {
+                    if (!prevButton.disabled) {
+                        prevButton.click();
+                    }
+                } else if (e.key === 'ArrowRight') {
+                    if (!nextButton.disabled) {
+                        nextButton.click();
+                    }
+                }
+            });
+            
+            // Fix for image loading issues
+            const images = document.querySelectorAll('.page-image');
+            images.forEach(img => {
+                img.onerror = function() {
+                    // If .png fails, try .jpg
+                    if (this.src.includes('.png')) {
+                        this.src = this.src.replace('.png', '.jpg');
+                    }
+                    
+                    // If still fails, show error message
+                    this.onerror = function() {
+                        this.style.display = 'none';
+                        const errorMsg = document.createElement('div');
+                        errorMsg.style.padding = '20px';
+                        errorMsg.style.backgroundColor = '#f8d7da';
+                        errorMsg.style.color = '#721c24';
+                        errorMsg.style.borderRadius = '8px';
+                        errorMsg.style.margin = '20px 0';
+                        errorMsg.style.textAlign = 'center';
+                        errorMsg.textContent = 'Image could not be loaded';
+                        this.parentNode.insertBefore(errorMsg, this.nextSibling);
+                    };
+                };
+            });
+        });
+    </script>
+</body>
+</html>
