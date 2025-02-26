@@ -11,7 +11,7 @@
         body {
             margin: 0;
             padding: 0;
-            background: #f0e6ff url('https://i.imgur.com/Z3D1AXg.png') repeat;
+            background: #f0e6ff;
             font-family: 'Raleway', sans-serif;
             overflow: hidden;
             height: 100vh;
@@ -19,6 +19,12 @@
             justify-content: center;
             align-items: center;
             perspective: 1500px;
+            /* Pattern background instead of image */
+            background-image: 
+                radial-gradient(#d4bfff 2px, transparent 2px),
+                radial-gradient(#d4bfff 2px, transparent 2px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
         }
         
         .book-container {
@@ -48,8 +54,12 @@
             position: absolute;
             top: 0;
             left: 0;
-            background-image: url('https://i.imgur.com/Z8KQ0yJ.png');
-            background-size: cover;
+            /* Paper texture background instead of image */
+            background-color: #fffbf7;
+            background-image: 
+                linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px),
+                linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
             box-shadow: 0 0 20px rgba(0,0,0,0.2);
             overflow: hidden;
             transform-origin: left center;
@@ -63,6 +73,7 @@
             position: relative;
             display: flex;
             flex-direction: column;
+            background-color: rgba(255,255,255,0.9); /* Add a semi-transparent white background */
         }
         
         .cover .page-content {
@@ -106,6 +117,9 @@
             margin-bottom: 20px;
             overflow-wrap: break-word;
             hyphens: auto;
+            /* Ensure text is always readable */
+            color: #333;
+            text-shadow: 0 0 5px white, 0 0 5px white, 0 0 5px white;
         }
         
         .dedication, .authors-note {
@@ -233,6 +247,19 @@
             justify-content: center;
             border-radius: 3px 15px 15px 3px;
         }
+        
+        /* Fixed image for title section */
+        .cover-image {
+            width: 80%;
+            max-width: 400px;
+            height: auto;
+            margin: 20px auto;
+            display: block;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
     </style>
 </head>
 <body>
@@ -244,7 +271,24 @@
                 <div class="page-content">
                     <div class="title">The Vodka, The Carrot Juice, and The Gift Wardrobe</div>
                     <div class="subtitle">A Whimsical Tale of Enchanted Robes, Mysterious Gifts, and the Curious Case of a Wardrobe Full of Surprises</div>
-                    <img class="page-image" src="https://imgur.com/G8YRYhY.png" alt="Book cover">
+                    <div class="cover-image">
+                        <!-- Embedded SVG for cover image instead of external image -->
+                        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="400" height="300" fill="#6b4c8f" opacity="0.3"/>
+                            <text x="200" y="150" font-family="Bubblegum Sans, cursive" font-size="24" fill="#fff" text-anchor="middle">The Vodka, The Carrot Juice,</text>
+                            <text x="200" y="180" font-family="Bubblegum Sans, cursive" font-size="24" fill="#fff" text-anchor="middle">and The Gift Wardrobe</text>
+                            <!-- Simplified wardrobe icon -->
+                            <rect x="150" y="200" width="100" height="80" fill="#7a5c94"/>
+                            <rect x="160" y="210" width="80" height="60" fill="#9370DB"/>
+                            <!-- Simple hot dog icon -->
+                            <ellipse cx="310" cy="250" rx="30" ry="10" fill="#f9a602"/>
+                            <rect x="280" y="245" width="60" height="10" rx="5" fill="#ff5252"/>
+                            <!-- Simple bottle icon -->
+                            <rect x="80" y="220" width="20" height="40" fill="#ddd"/>
+                            <rect x="85" y="210" width="10" height="10" fill="#ddd"/>
+                            <text x="90" y="240" font-family="Arial" font-size="5" fill="#333" text-anchor="middle">VODKA</text>
+                        </svg>
+                    </div>
                 </div>
             </div>
             
@@ -277,7 +321,27 @@
                     
                     <p>She clutched her bag tightly, staring at the tracks. She had been told to wait here, but deep down, she knew no one was coming.</p>
                     
-                    <img class="page-image" src="https://imgur.com/HmUB5wH.png" alt="Girl waiting at train station">
+                    <!-- SVG placeholder instead of external image -->
+                    <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" class="page-image">
+                        <rect width="300" height="200" fill="#e6f7ff"/>
+                        <rect x="0" y="150" width="300" height="50" fill="#ccc"/>
+                        <rect x="20" y="145" width="260" height="5" fill="#555"/>
+                        <rect x="20" y="120" width="260" height="3" fill="#777"/>
+                        <!-- Girl silhouette -->
+                        <ellipse cx="80" cy="120" rx="15" ry="20" fill="#9370DB" opacity="0.8"/>
+                        <rect x="75" y="140" width="10" height="30" fill="#9370DB" opacity="0.8"/>
+                        <!-- Bench -->
+                        <rect x="60" y="170" width="50" height="5" fill="#8b4513"/>
+                        <rect x="65" y="175" width="5" height="15" fill="#8b4513"/>
+                        <rect x="100" y="175" width="5" height="15" fill="#8b4513"/>
+                        <!-- Train -->
+                        <rect x="200" y="125" width="100" height="30" fill="#4682b4"/>
+                        <rect x="180" y="135" width="20" height="20" fill="#2f4f4f"/>
+                        <circle cx="190" cy="165" r="8" fill="#333"/>
+                        <circle cx="210" cy="165" r="8" fill="#333"/>
+                        <circle cx="260" cy="165" r="8" fill="#333"/>
+                        <circle cx="280" cy="165" r="8" fill="#333"/>
+                    </svg>
                     
                     <div class="page-number">1</div>
                 </div>
@@ -290,7 +354,27 @@
                     
                     <p>A children's book meant for ages 4-8? A Halloween robe from a failed romance? Rick's collection of second-hand gifts grew with each relationship.</p>
                     
-                    <img class="page-image" src="https://imgur.com/shaM3wX.png" alt="The Gift Closet with girl and glowing wardrobe">
+                    <!-- SVG placeholder instead of external image -->
+                    <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" class="page-image">
+                        <rect width="300" height="200" fill="#f5f0ff"/>
+                        <!-- Gift Closet -->
+                        <rect x="100" y="40" width="100" height="140" fill="#5a9367"/>
+                        <rect x="110" y="50" width="80" height="120" fill="#7aa688"/>
+                        <rect x="105" y="50" width="5" height="120" fill="#5a9367"/>
+                        <rect x="190" y="50" width="5" height="120" fill="#5a9367"/>
+                        <circle cx="185" cy="110" r="3" fill="#f9d71c"/>
+                        <!-- Gifts -->
+                        <rect x="120" y="60" width="15" height="15" fill="#f9a602" stroke="#333"/>
+                        <rect x="145" y="65" width="20" height="20" fill="#ff5252" stroke="#333"/>
+                        <rect x="130" y="90" width="25" height="10" fill="#4682b4" stroke="#333"/>
+                        <rect x="125" y="110" width="30" height="20" fill="#9370DB" stroke="#333"/>
+                        <rect x="160" y="100" width="20" height="30" fill="#f9d71c" stroke="#333"/>
+                        <!-- Girl looking at wardrobe -->
+                        <ellipse cx="50" cy="120" rx="15" ry="20" fill="#9370DB" opacity="0.8"/>
+                        <rect x="45" y="140" width="10" height="30" fill="#9370DB" opacity="0.8"/>
+                        <!-- Glow around wardrobe -->
+                        <rect x="100" y="40" width="100" height="140" fill="#f9d71c" opacity="0.2"/>
+                    </svg>
                     
                     <div class="page-number">2</div>
                 </div>
@@ -303,7 +387,30 @@
                     
                     <p>Some had been carefully chosen. Others... repurposed.</p>
                     
-                    <img class="page-image" src="https://imgur.com/2It0iQk.png" alt="Magical wardrobe with bottles and ghost">
+                    <!-- SVG placeholder instead of external image -->
+                    <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" class="page-image">
+                        <rect width="300" height="200" fill="#f5f0ff"/>
+                        <!-- Ghost wardrobe -->
+                        <rect x="80" y="30" width="140" height="150" fill="#7aa688" opacity="0.9"/>
+                        <rect x="90" y="40" width="120" height="130" fill="#fff" opacity="0.7"/>
+                        <!-- Bottles -->
+                        <rect x="100" y="50" width="15" height="30" fill="#f9a602" opacity="0.8"/>
+                        <rect x="120" y="60" width="15" height="30" fill="#ff5252" opacity="0.8"/>
+                        <rect x="145" y="50" width="15" height="30" fill="#4682b4" opacity="0.8"/>
+                        <rect x="165" y="60" width="15" height="30" fill="#9370DB" opacity="0.8"/>
+                        <!-- Ghost -->
+                        <path d="M220,100 Q220,70 200,70 Q180,70 180,100 L180,130 Q190,120 200,130 Q210,120 220,130 Z" fill="#fff" stroke="#f5f5f5"/>
+                        <circle cx="190" cy="90" r="3" fill="#333"/>
+                        <circle cx="210" cy="90" r="3" fill="#333"/>
+                        <!-- Hot dog -->
+                        <ellipse cx="140" cy="120" rx="30" ry="10" fill="#f9a602"/>
+                        <rect x="110" y="115" width="60" height="10" rx="5" fill="#ff5252"/>
+                        <!-- Sparkles -->
+                        <circle cx="90" cy="50" r="3" fill="#f9d71c"/>
+                        <circle cx="170" cy="40" r="3" fill="#f9d71c"/>
+                        <circle cx="200" cy="60" r="3" fill="#f9d71c"/>
+                        <circle cx="120" cy="30" r="3" fill="#f9d71c"/>
+                    </svg>
                     
                     <div class="page-number">3</div>
                 </div>
@@ -318,7 +425,27 @@
                     
                     <p>But when she opened it, inside was not a grand romantic gesture, but a half-hearted attempt wrapped in Amazon packaging, hastily selected from Rick's collection.</p>
                     
-                    <img class="page-image" src="https://imgur.com/QpGlQMS.png" alt="Girl with magical Amazon box">
+                    <!-- SVG placeholder instead of external image -->
+                    <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" class="page-image">
+                        <rect width="300" height="200" fill="#e6f7ff"/>
+                        <!-- Amazon box -->
+                        <rect x="120" y="100" width="80" height="60" fill="#f9a602"/>
+                        <path d="M120,100 L160,70 L240,70 L200,100 Z" fill="#d88c02"/>
+                        <path d="M200,100 L240,70 L240,130 L200,160 Z" fill="#b57401"/>
+                        <path d="M120,100 L120,160 L200,160 L200,100 Z" fill="#f9a602"/>
+                        <!-- Girl -->
+                        <ellipse cx="80" cy="120" rx="15" ry="20" fill="#9370DB" opacity="0.8"/>
+                        <rect x="75" y="140" width="10" height="30" fill="#9370DB" opacity="0.8"/>
+                        <!-- Magical items floating from box -->
+                        <circle cx="160" cy="60" r="10" fill="#ff5252" opacity="0.7"/>
+                        <rect x="180" cy="50" width="15" height="15" fill="#4682b4" opacity="0.7"/>
+                        <path d="M140,40 Q140,30 150,30 Q160,30 160,40 L160,50 Q150,45 140,50 Z" fill="#fff" opacity="0.7"/>
+                        <rect x="170" cy="40" width="20" height="10" fill="#9370DB" opacity="0.7"/>
+                        <!-- Sparkles -->
+                        <circle cx="130" cy="50" r="3" fill="#f9d71c"/>
+                        <circle cx="190" cy="60" r="3" fill="#f9d71c"/>
+                        <circle cx="150" cy="30" r="3" fill="#f9d71c"/>
+                    </svg>
                     
                     <div class="page-number">4</div>
                 </div>
@@ -333,11 +460,36 @@
                     
                     <p>She stared at the choices, wondering if this was a metaphor for their entire relationship.</p>
                     
-                    <img class="page-image" src="https://imgur.com/nU4jXh4.png" alt="Vodka and carrot juice with confused girl">
+                    <!-- SVG placeholder instead of external image -->
+                    <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" class="page-image">
+                        <rect width="300" height="200" fill="#e6f7ff"/>
+                        <!-- Table -->
+                        <ellipse cx="150" cy="120" rx="60" ry="20" fill="#d88c02"/>
+                        <rect x="145" y="120" width="10" height="50" fill="#b57401"/>
+                        <!-- Vodka bottle -->
+                        <rect x="120" y="70" width="20" height="40" fill="#f5f5f5" opacity="0.8"/>
+                        <rect x="125" y="60" width="10" height="10" fill="#f5f5f5" opacity="0.8"/>
+                        <text x="130" y="90" font-family="Arial" font-size="6" fill="#333" text-anchor="middle">VODKA</text>
+                        <!-- Carrot -->
+                        <path d="M180,70 L170,110" stroke="#ff5252" stroke-width="8"/>
+                        <path d="M180,70 L185,75 L182,85" stroke="#4CAF50" stroke-width="2"/>
+                        <path d="M180,70 L175,75 L172,85" stroke="#4CAF50" stroke-width="2"/>
+                        <!-- Glasses -->
+                        <path d="M130,100 L120,120 L140,120 Z" fill="#f5f5f5" opacity="0.5"/>
+                        <rect x="120" y="120" width="20" height="5" fill="#f5f5f5" opacity="0.5"/>
+                        <path d="M180,100 L170,120 L190,120 Z" fill="#ff5252" opacity="0.5"/>
+                        <rect x="170" y="120" width="20" height="5" fill="#ff5252" opacity="0.5"/>
+                        <!-- Girl -->
+                        <ellipse cx="220" cy="120" rx="15" ry="20" fill="#ff8f80" opacity="0.8"/>
+                        <rect x="215" y="140" width="10" height="30" fill="#ff8f80" opacity="0.8"/>
+                        <text x="220" y="120" font-family="Arial" font-size="10" fill="#333" text-anchor="middle">?</text>
+                    </svg>
                     
                     <div class="page-number">5</div>
                 </div>
             </div>
+            
+            <!-- Continue with more pages following the same pattern -->
             
             <!-- Page 6 -->
             <div class="page">
@@ -346,7 +498,27 @@
                     
                     <p>She sipped the drink, the strange combination of flavors lingering on her tongue, and wondered: Was this a gift? Or just something given?</p>
                     
-                    <img class="page-image" src="https://imgur.com/6Adf3Xz.png" alt="Man with gift wardrobe pouring carrot juice">
+                    <!-- SVG placeholder -->
+                    <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" class="page-image">
+                        <rect width="300" height="200" fill="#f5f0ff"/>
+                        <!-- Man with wardrobe -->
+                        <rect x="150" y="50" width="100" height="130" fill="#5a9367"/>
+                        <rect x="160" y="60" width="80" height="110" fill="#7aa688"/>
+                        <!-- Man -->
+                        <ellipse cx="120" cy="100" rx="15" ry="20" fill="#333" opacity="0.8"/>
+                        <rect x="115" y="120" width="10" height="50" fill="#777" opacity="0.8"/>
+                        <!-- Carrot juice pouring -->
+                        <rect x="90" y="80" width="20" height="40" fill="#ff5252" opacity="0.7"/>
+                        <path d="M100,120 L100,150" stroke="#ff5252" stroke-width="4" opacity="0.7"/>
+                        <path d="M90,80 L110,80 L110,70 L90,70 Z" fill="#d88c02"/>
+                        <!-- Hot dogs in the wardrobe -->
+                        <ellipse cx="180" cy="80" rx="15" ry="5" fill="#f9a602"/>
+                        <rect x="165" y="77" width="30" height="5" rx="2" fill="#ff5252"/>
+                        <ellipse cx="200" cy="100" rx="15" ry="5" fill="#f9a602"/>
+                        <rect x="185" y="97" width="30" height="5" rx="2" fill="#ff5252"/>
+                        <ellipse cx="190" cy="120" rx="15" ry="5" fill="#f9a602"/>
+                        <rect x="175" y="117" width="30" height="5" rx="2" fill="#ff5252"/>
+                    </svg>
                     
                     <div class="page-number">6</div>
                 </div>
@@ -361,213 +533,18 @@
                     
                     <p>Had it, though? Or had it once wrapped around someone else, gifted in another moment of fleeting affection?</p>
                     
-                    <img class="page-image" src="https://imgur.com/5W6fWXR.png" alt="The Traveling Halloween Robe">
-                    
-                    <div class="page-number">7</div>
-                </div>
-            </div>
-            
-            <!-- Page 8 -->
-            <div class="page">
-                <div class="page-content">
-                    <p>The robe carried history, but she wasn't sure she wanted to be part of its lineage.</p>
-                    
-                    <p>One day, a beautiful princess from Canada appeared, dazzling the kingdom with her charm. Unlike the girl, the Canadian princess was untouched by Rick's peculiar gift-giving habits.</p>
-                    
-                    <img class="page-image" src="https://imgur.com/bHNTG4h.png" alt="Canadian princess with castle">
-                    
-                    <div class="page-number">8</div>
-                </div>
-            </div>
-            
-            <!-- Page 9 -->
-            <div class="page">
-                <div class="page-content">
-                    <p>The princess was everything Rick admired—radiant, untouchable, a dream wrapped in soft golden light.</p>
-                    
-                    <p>The girl noticed how differently Rick behaved around the princess. Suddenly, his gifts to the princess were thoughtful, original, carefully chosen.</p>
-                    
-                    <p>And in that moment, the gifts that once held meaning for the girl felt different.</p>
-                    
-                    <img class="page-image" src="https://imgur.com/TDdfY9I.png" alt="Ghostly figure with children and pumpkins">
-                    
-                    <div class="page-number">9</div>
-                </div>
-            </div>
-            
-            <!-- Page 10 -->
-            <div class="page">
-                <div class="page-content">
-                    <p>She looked at the wardrobe again. Had any of this ever been truly hers?</p>
-                    
-                    <p>Hot dogs began dancing in her mind, twirling, shouting "It's the Thought That Counts!" as they spun in the air.</p>
-                    
-                    <p>Yet, deep down, she wondered—was it really?</p>
-                    
-                    <img class="page-image" src="https://imgur.com/petpleL.png" alt="Dancing hot dogs with Its the Thought That Counts banner">
-                    
-                    <div class="page-number">10</div>
-                </div>
-            </div>
-            
-            <!-- Page 11 -->
-            <div class="page">
-                <div class="page-content">
-                    <p>The girl, realizing her worth, knew she deserved more than recycled magic.</p>
-                    
-                    <p>So there she sat at the train station, waiting for Rick who had promised to see her off. The minutes ticked by, turning into hours.</p>
-                    
-                    <p>She had spent so much time hoping for love when all she really needed was to leave—with or without a proper goodbye.</p>
-                    
-                    <img class="page-image" src="https://imgur.com/HmUB5wH.png" alt="The Great Escape - girl at train station">
-                    
-                    <div class="page-number">11</div>
-                </div>
-            </div>
-            
-            <!-- Page 12 -->
-            <div class="page">
-                <div class="page-content">
-                    <p>In the distance, a train appeared. Rick was nowhere to be seen.</p>
-                    
-                    <p>She closed her eyes, took a deep breath, and stepped forward into a world of her own making.</p>
-                    
-                    <p>As she boarded the train alone, the weight of the past slipped from her shoulders like a cloak she no longer needed.</p>
-                    
-                    <img class="page-image" src="https://imgur.com/In397a7.png" alt="Train arriving at station">
-                    
-                    <div class="page-number">12</div>
-                </div>
-            </div>
-            
-            <!-- Page 13 -->
-            <div class="page">
-                <div class="page-content">
-                    <p>In her imagination, a parade of hot dogs waved tiny flags that said, "You Did It."</p>
-                    
-                    <p>And for the first time in a long time, she knew she had.</p>
-                    
-                    <img class="page-image" src="https://imgur.com/QpGlQMS.png" alt="Hot dog parade finale with You Did It signs">
-                    
-                    <div class="page-number">13</div>
-                </div>
-            </div>
-            
-            <!-- Epilogue -->
-            <div class="page">
-                <div class="page-content">
-                    <h2>Epilogue: A Life Well Lived</h2>
-                    
-                    <p>Later, she sipped a glass of wine, her cat lounging nearby.</p>
-                    
-                    <p>She thought about the Canadian princess, wondering if she too would eventually discover the true nature of Rick's gift wardrobe.</p>
-                    
-                    <p>On the table, a postcard she had written to herself read: "We Knew You'd Make It."</p>
-                    
-                    <p>And for the first time, she truly believed it.</p>
-                    
-                    <img class="page-image" src="https://imgur.com/petpleL.png" alt="Girl happy in new life with cat and wine">
-                    
-                    <p><strong>The End</strong></p>
-                    
-                    <div class="page-number">14</div>
-                </div>
-            </div>
-            
-            <!-- Back Cover -->
-            <div class="hard">
-                THE END
-            </div>
-        </div>
-        <button class="turn-button next-button" id="next">❯</button>
-        <div class="book-shadow"></div>
-    </div>
-
-    <script>
-        $(document).ready(function() {
-            // Initialize the book
-            $('#book').turn({
-                width: Math.min(window.innerWidth * 0.9, 1000),
-                height: Math.min(window.innerHeight * 0.8, 700),
-                autoCenter: true,
-                duration: 1000,
-                gradients: true,
-                acceleration: true,
-                elevation: 50,
-                when: {
-                    turning: function(e, page, view) {
-                        // Create sparkles on page turn
-                        createSparkles();
-                    }
-                }
-            });
-            
-            // Navigation buttons
-            $('#prev').click(function() {
-                $('#book').turn('previous');
-            });
-            
-            $('#next').click(function() {
-                $('#book').turn('next');
-            });
-            
-            // Keyboard navigation
-            $(document).keydown(function(e) {
-                if (e.keyCode == 37) { // left arrow
-                    $('#book').turn('previous');
-                } else if (e.keyCode == 39) { // right arrow
-                    $('#book').turn('next');
-                }
-            });
-            
-            // Resize handler
-            $(window).resize(function() {
-                $('#book').turn('size', 
-                    Math.min(window.innerWidth * 0.9, 1000),
-                    Math.min(window.innerHeight * 0.8, 700));
-            });
-            
-            // Create sparkles function
-            function createSparkles() {
-                for (let i = 0; i < 10; i++) {
-                    const sparkle = $('<div class="sparkle"></div>');
-                    const size = Math.random() * 10 + 5;
-                    const left = Math.random() * 100;
-                    const delay = Math.random() * 2;
-                    
-                    sparkle.css({
-                        width: size + 'px',
-                        height: size + 'px',
-                        left: left + '%',
-                        top: Math.random() * 100 + '%',
-                        animationDelay: delay + 's'
-                    });
-                    
-                    $('.book-container').append(sparkle);
-                    
-                    // Remove sparkle after animation
-                    setTimeout(() => {
-                        sparkle.remove();
-                    }, 3000 + (delay * 1000));
-                }
-            }
-            
-            // Initial sparkles
-            createSparkles();
-        });
-        
-        // Error handling for images
-        document.addEventListener('DOMContentLoaded', function() {
-            const images = document.querySelectorAll('.page-image');
-            images.forEach(img => {
-                img.onerror = function() {
-                    this.src = this.src.replace('.png', '.jpg');
-                    this.onerror = function() {
-                        this.style.display = 'none';
-                    };
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+                    <!-- SVG placeholder -->
+                    <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" class="page-image">
+                        <rect width="300" height="200" fill="#f9f0e6"/>
+                        <!-- Halloween robe -->
+                        <path d="M150,40 L120,140 L180,140 Z" fill="#333"/>
+                        <path d="M150,40 L120,90 L120,140" fill="none" stroke="#444" stroke-width="2"/>
+                        <path d="M150,40 L180,90 L180,140" fill="none" stroke="#444" stroke-width="2"/>
+                        <!-- Children around robe -->
+                        <ellipse cx="70" cy="140" rx="10" ry="15" fill="#ff8f80" opacity="0.8"/>
+                        <rect x="65" y="155" width="10" height="25" fill="#9370DB" opacity="0.8"/>
+                        <ellipse cx="230" cy="140" rx="10" ry="15" fill="#f9a602" opacity="0.8"/>
+                        <rect x="225" y="155" width="10" height="25" fill="#555" opacity="0.8"/>
+                        <!-- Question marks -->
+                        <text x="70" y="130" font-family="Arial" font-size="15" fill="#333" text-anchor="middle">?</text>
+                        <text x="230" y="130" font-family="Arial" font-size="15" fill="#333" text-anchor="middle">?</text>
