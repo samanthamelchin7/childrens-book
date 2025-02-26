@@ -5,546 +5,456 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Vodka, The Carrot Juice, and The Gift Wardrobe</title>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Bubblegum+Sans&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/3/turn.min.js"></script>
     <style>
         body {
             margin: 0;
             padding: 0;
-            background: #f0e6ff;
+            background-color: #f0e6ff;
+            background-image: radial-gradient(#d4bfff 2px, transparent 2px);
+            background-size: 30px 30px;
             font-family: 'Raleway', sans-serif;
-            overflow: hidden;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            perspective: 1500px;
-            /* Pattern background instead of image */
-            background-image: 
-                radial-gradient(#d4bfff 2px, transparent 2px),
-                radial-gradient(#d4bfff 2px, transparent 2px);
-            background-size: 40px 40px;
-            background-position: 0 0, 20px 20px;
+            color: #333;
         }
         
         .book-container {
-            width: 100%;
-            height: 90vh;
-            max-width: 1200px;
-            max-height: 800px;
-            margin: 0 auto;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
             position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .book {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            transform-style: preserve-3d;
         }
         
         .page {
-            background: #fff;
-            color: #333;
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            /* Paper texture background instead of image */
-            background-color: #fffbf7;
-            background-image: 
-                linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px),
-                linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px);
-            background-size: 20px 20px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.2);
-            overflow: hidden;
-            transform-origin: left center;
-            border-radius: 3px 15px 15px 3px;
-        }
-        
-        .page-content {
             padding: 30px;
-            box-sizing: border-box;
-            height: 100%;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            background-color: rgba(255,255,255,0.9); /* Add a semi-transparent white background */
+            background-color: white;
+            min-height: 500px;
+            display: none;
+            animation: fadeIn 0.5s ease;
         }
         
-        .cover .page-content {
+        .page.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .cover {
             background: linear-gradient(135deg, #6b4c8f 0%, #9370DB 100%);
             color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
             text-align: center;
-            border-radius: 3px 15px 15px 3px;
+            padding: 50px 30px;
         }
         
         .title {
             font-family: 'Bubblegum Sans', cursive;
-            font-size: 3vw;
+            font-size: 36px;
             margin-bottom: 20px;
-            text-shadow: 3px 3px 5px rgba(0,0,0,0.3);
-            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         
         .subtitle {
-            font-size: 1.2vw;
+            font-size: 18px;
             font-style: italic;
-            margin-bottom: 40px;
-            text-align: center;
-            max-width: 80%;
+            margin-bottom: 30px;
         }
         
         h2 {
             font-family: 'Bubblegum Sans', cursive;
             color: #6b4c8f;
-            margin-top: 10px;
-            font-size: 1.8vw;
+            margin-top: 0;
+            font-size: 28px;
             text-align: center;
         }
         
         p {
-            font-size: 1.2vw;
+            font-size: 16px;
             line-height: 1.7;
             margin-bottom: 20px;
-            overflow-wrap: break-word;
-            hyphens: auto;
-            /* Ensure text is always readable */
-            color: #333;
-            text-shadow: 0 0 5px white, 0 0 5px white, 0 0 5px white;
         }
         
         .dedication, .authors-note {
             font-style: italic;
             text-align: center;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
         }
         
         .page-image {
-            max-width: 90%;
-            max-height: 50%;
-            object-fit: contain;
-            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+            margin: 20px auto;
             display: block;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
         
         .epilogue {
             background-color: #f5f0ff;
-            border-radius: 15px;
             padding: 20px;
-            margin-top: auto;
-            margin-bottom: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
         }
         
         .page-number {
-            position: absolute;
-            bottom: 15px;
             text-align: center;
-            width: 100%;
-            left: 0;
             color: #999;
-            font-size: 1vw;
+            font-size: 14px;
+            margin-top: 20px;
             font-family: 'Bubblegum Sans', cursive;
         }
         
-        .turn-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(107, 76, 143, 0.7);
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: #f0e6ff;
+            position: sticky;
+            bottom: 0;
+            border-top: 1px solid #d4bfff;
+        }
+        
+        .nav-button {
+            background-color: #6b4c8f;
             color: white;
             border: none;
-            padding: 15px;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            padding: 10px 20px;
+            border-radius: 5px;
             cursor: pointer;
-            font-size: 1.5em;
-            transition: all 0.3s ease;
-            z-index: 1000;
-        }
-        
-        .turn-button:hover {
-            background: rgba(107, 76, 143, 1);
-            transform: translateY(-50%) scale(1.1);
-        }
-        
-        .prev-button {
-            left: 10px;
-        }
-        
-        .next-button {
-            right: 10px;
-        }
-        
-        .book-shadow {
-            position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            height: 20px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 50%;
-            filter: blur(10px);
-            z-index: -1;
-        }
-        
-        .sparkle {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: white;
-            border-radius: 50%;
-            box-shadow: 0 0 10px 2px gold;
-            animation: sparkle 3s infinite;
-            opacity: 0;
-            pointer-events: none;
-        }
-        
-        @keyframes sparkle {
-            0% { opacity: 0; transform: scale(0.1); }
-            50% { opacity: 1; transform: scale(1); }
-            100% { opacity: 0; transform: scale(0.1); }
-        }
-        
-        @media (max-width: 768px) {
-            .title { font-size: 6vw; }
-            .subtitle { font-size: 3vw; }
-            h2 { font-size: 4vw; }
-            p { font-size: 3vw; }
-        }
-        
-        /* Turn.js specific styles */
-        .turn-page {
-            background-color: white;
-        }
-        
-        .hard {
-            background: linear-gradient(135deg, #6b4c8f 0%, #9370DB 100%) !important;
-            color: white;
             font-family: 'Bubblegum Sans', cursive;
-            font-size: 3em;
-            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-button:hover {
+            background-color: #9370DB;
+            transform: scale(1.05);
+        }
+        
+        .nav-button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .page-indicator {
+            display: flex;
+            align-items: center;
+            font-family: 'Bubblegum Sans', cursive;
+        }
+
+        .magical-element {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0;
+            animation: sparkle 3s ease-in-out;
+        }
+
+        @keyframes sparkle {
+            0% { opacity: 0; transform: scale(0.5) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1) rotate(180deg); }
+            100% { opacity: 0; transform: scale(0.5) rotate(360deg); }
+        }
+
+        .placeholder-image {
+            height: 200px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 3px 15px 15px 3px;
+            background-color: #f5f0ff;
+            border-radius: 8px;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
         }
-        
-        /* Fixed image for title section */
-        .cover-image {
-            width: 80%;
-            max-width: 400px;
-            height: auto;
-            margin: 20px auto;
-            display: block;
-            background-color: #fff;
-            padding: 10px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+
+        .placeholder-icon {
+            font-size: 40px;
+            color: #6b4c8f;
+        }
+
+        /* Simple thematic illustrations to replace missing images */
+        .illustration {
+            width: 100%;
+            height: 200px;
+            margin: 20px 0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .illustration-1 { background-color: #e6f7ff; } /* Train station */
+        .illustration-2 { background-color: #f5f0ff; } /* Gift closet */
+        .illustration-3 { background-color: #f5f0ff; } /* Magical wardrobe */
+        .illustration-4 { background-color: #e6f7ff; } /* Amazon box */
+        .illustration-5 { background-color: #fff0f0; } /* Vodka and carrot juice */
+        .illustration-6 { background-color: #f0fff0; } /* Man with wardrobe */
+        .illustration-7 { background-color: #f9f0e6; } /* Halloween robe */
+        .illustration-8 { background-color: #fff0f5; } /* Canadian princess */
+        .illustration-9 { background-color: #f0f8ff; } /* Ghost and gifts */
+        .illustration-10 { background-color: #fff8e8; } /* Dancing hot dogs */
+        .illustration-11 { background-color: #e6f7ff; } /* Girl at train station */
+        .illustration-12 { background-color: #f0f8ff; } /* Train arriving */
+        .illustration-13 { background-color: #ffe8e8; } /* Hot dog parade */
+        .illustration-14 { background-color: #f0fff0; } /* Epilogue */
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .book-container {
+                margin: 10px;
+                border-radius: 5px;
+            }
+            
+            .page {
+                padding: 20px;
+                min-height: 300px;
+            }
+            
+            .title {
+                font-size: 28px;
+            }
+            
+            .subtitle {
+                font-size: 16px;
+            }
+            
+            .nav-button {
+                padding: 8px 15px;
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="book-container">
-        <button class="turn-button prev-button" id="prev">❮</button>
-        <div class="book" id="book">
-            <!-- Hard Cover -->
-            <div class="hard">
-                <div class="page-content">
-                    <div class="title">The Vodka, The Carrot Juice, and The Gift Wardrobe</div>
-                    <div class="subtitle">A Whimsical Tale of Enchanted Robes, Mysterious Gifts, and the Curious Case of a Wardrobe Full of Surprises</div>
-                    <div class="cover-image">
-                        <!-- Embedded SVG for cover image instead of external image -->
-                        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="400" height="300" fill="#6b4c8f" opacity="0.3"/>
-                            <text x="200" y="150" font-family="Bubblegum Sans, cursive" font-size="24" fill="#fff" text-anchor="middle">The Vodka, The Carrot Juice,</text>
-                            <text x="200" y="180" font-family="Bubblegum Sans, cursive" font-size="24" fill="#fff" text-anchor="middle">and The Gift Wardrobe</text>
-                            <!-- Simplified wardrobe icon -->
-                            <rect x="150" y="200" width="100" height="80" fill="#7a5c94"/>
-                            <rect x="160" y="210" width="80" height="60" fill="#9370DB"/>
-                            <!-- Simple hot dog icon -->
-                            <ellipse cx="310" cy="250" rx="30" ry="10" fill="#f9a602"/>
-                            <rect x="280" y="245" width="60" height="10" rx="5" fill="#ff5252"/>
-                            <!-- Simple bottle icon -->
-                            <rect x="80" y="220" width="20" height="40" fill="#ddd"/>
-                            <rect x="85" y="210" width="10" height="10" fill="#ddd"/>
-                            <text x="90" y="240" font-family="Arial" font-size="5" fill="#333" text-anchor="middle">VODKA</text>
-                        </svg>
-                    </div>
+        <!-- Cover Page -->
+        <div class="page cover active" id="page-cover">
+            <div class="title">The Vodka, The Carrot Juice, and The Gift Wardrobe</div>
+            <div class="subtitle">A Whimsical Tale of Enchanted Robes, Mysterious Gifts, and the Curious Case of a Wardrobe Full of Surprises</div>
+            <div class="illustration" style="background-color: #8a65c9; height: 300px;">
+                <div style="position: absolute; width: 100px; height: 150px; background-color: #5a9367; bottom: 50px; left: 50%; transform: translateX(-50%);"></div>
+                <div style="position: absolute; width: 50px; height: 50px; background-color: #fff; opacity: 0.9; border-radius: 50%; top: 50px; left: 30%;"></div>
+                <div style="position: absolute; width: 20px; height: 60px; background-color: #f5f5f5; bottom: 50px; left: 30%; border-radius: 3px;">
+                    <div style="position: absolute; width: 100%; text-align: center; font-size: 8px; color: #333; top: 20px;">VODKA</div>
                 </div>
+                <div style="position: absolute; width: 30px; height: 8px; background-color: #f9a602; bottom: 80px; right: 40%; border-radius: 4px;"></div>
+                <div style="position: absolute; width: 30px; height: 8px; background-color: #ff5252; bottom: 80px; right: 40%; border-radius: 4px; transform: translateY(4px);"></div>
+            </div>
+        </div>
+        
+        <!-- Dedication -->
+        <div class="page" id="page-1">
+            <div class="dedication">
+                <h2>Dedication</h2>
+                <p>For everyone who has ever received a suspiciously re-gifted present.</p>
+                <p>To those who have accepted carrot juice when they deserved champagne.</p>
+                <p>To the ones who were left waiting at the train station but eventually found their own way home.</p>
+            </div>
+            <div class="page-number">i</div>
+        </div>
+        
+        <!-- Author's Note -->
+        <div class="page" id="page-2">
+            <div class="authors-note">
+                <h2>Author's Note</h2>
+                <p>This story is based on real events. Unfortunately.</p>
+                <p>May you never receive a gift from the magical re-gifting closet.</p>
+                <p>No hot dogs were harmed in the making of this book.</p>
+            </div>
+            <div class="page-number">ii</div>
+        </div>
+        
+        <!-- Page 1 -->
+        <div class="page" id="page-3">
+            <p>Once upon a time, there was a lonely girl who found herself waiting at a train station, uncertain of what lay ahead. She had spent many nights feeling like a passenger in her own life, watching the world move around her while she remained stuck in place.</p>
+            
+            <p>She clutched her bag tightly, staring at the tracks. She had been told to wait here, but deep down, she knew no one was coming.</p>
+            
+            <div class="illustration illustration-1">
+                <div style="position: absolute; width: 100%; height: 20px; background-color: #777; bottom: 0;"></div>
+                <div style="position: absolute; width: 80%; height: 5px; background-color: #333; bottom: 20px; left: 10%;"></div>
+                <div style="position: absolute; width: 30px; height: 50px; background-color: #9370DB; opacity: 0.8; bottom: 20px; left: 20%; border-radius: 10px 10px 0 0;"></div>
+                <div style="position: absolute; width: 100px; height: 30px; background-color: #4682b4; bottom: 25px; right: 20%; border-radius: 5px;"></div>
+                <div style="position: absolute; width: 80px; height: 10px; background-color: #f0f0f0; bottom: 25px; left: 30%; text-align: center; font-size: 8px;">bench</div>
             </div>
             
-            <!-- Dedication -->
-            <div class="page">
-                <div class="page-content dedication">
-                    <h2>Dedication</h2>
-                    <p>For everyone who has ever received a suspiciously re-gifted present.</p>
-                    <p>To those who have accepted carrot juice when they deserved champagne.</p>
-                    <p>To the ones who were left waiting at the train station but eventually found their own way home.</p>
-                    <div class="page-number">i</div>
-                </div>
+            <div class="page-number">1</div>
+        </div>
+        
+        <!-- Page 2 -->
+        <div class="page" id="page-4">
+            <p>Deep within an enchanted land, there existed a magical wardrobe kept by a man named Rick. This wasn't just any closet—it was filled with gifts originally meant for someone else, only to be repurposed at the last minute.</p>
+            
+            <p>A children's book meant for ages 4-8? A Halloween robe from a failed romance? Rick's collection of second-hand gifts grew with each relationship.</p>
+            
+            <div class="illustration illustration-2">
+                <div style="position: absolute; width: 100px; height: 150px; background-color: #5a9367; top: 25px; left: 50%; transform: translateX(-50%);"></div>
+                <div style="position: absolute; width: 80px; height: 130px; background-color: #7aa688; top: 35px; left: 50%; transform: translateX(-50%);"></div>
+                <div style="position: absolute; width: 20px; height: 20px; background-color: #f9a602; top: 45px; left: 45%;"></div>
+                <div style="position: absolute; width: 20px; height: 20px; background-color: #ff5252; top: 75px; left: 43%;"></div>
+                <div style="position: absolute; width: 20px; height: 20px; background-color: #4682b4; top: 105px; left: 47%;"></div>
+                <div style="position: absolute; width: 30px; height: 50px; background-color: #9370DB; opacity: 0.8; bottom: 20px; left: 20%; border-radius: 10px 10px 0 0;"></div>
+                <div style="position: absolute; font-size: 12px; color: #333; top: 10px; width: 100%; text-align: center;">The Gift Closet</div>
             </div>
             
-            <!-- Author's Note -->
-            <div class="page">
-                <div class="page-content authors-note">
-                    <h2>Author's Note</h2>
-                    <p>This story is based on real events. Unfortunately.</p>
-                    <p>May you never receive a gift from the magical re-gifting closet.</p>
-                    <p>No hot dogs were harmed in the making of this book.</p>
-                    <div class="page-number">ii</div>
-                </div>
+            <div class="page-number">2</div>
+        </div>
+        
+        <!-- Page 3 -->
+        <div class="page" id="page-5">
+            <p>There were shimmering jewels, mysterious packages wrapped in golden paper, and trinkets that whispered secrets of their past owners. But not all gifts in the wardrobe were truly meant for the ones who received them.</p>
+            
+            <p>Some had been carefully chosen. Others... repurposed.</p>
+            
+            <div class="illustration illustration-3">
+                <div style="position: absolute; width: 100px; height: 150px; background-color: #7aa688; opacity: 0.9; top: 25px; left: 50%; transform: translateX(-50%);"></div>
+                <div style="position: absolute; width: 80px; height: 130px; background-color: #fff; opacity: 0.7; top: 35px; left: 50%; transform: translateX(-50%);"></div>
+                <div style="position: absolute; width: 15px; height: 30px; background-color: #f9a602; opacity: 0.8; top: 45px; left: 45%;"></div>
+                <div style="position: absolute; width: 15px; height: 30px; background-color: #ff5252; opacity: 0.8; top: 45px; left: 60%;"></div>
+                <div style="position: absolute; width: 50px; height: 70px; background-color: #fff; right: 20%; top: 40%; border-radius: 50% 50% 0 0;"></div>
+                <div style="position: absolute; width: 6px; height: 6px; background-color: #333; right: 32%; top: 50%;"></div>
+                <div style="position: absolute; width: 6px; height: 6px; background-color: #333; right: 22%; top: 50%;"></div>
+                <div style="position: absolute; width: 10px; height: 10px; background-color: #f9d71c; top: 30px; left: 30%; border-radius: 50%; opacity: 0.8;"></div>
+                <div style="position: absolute; width: 10px; height: 10px; background-color: #f9d71c; top: 50px; right: 30%; border-radius: 50%; opacity: 0.8;"></div>
             </div>
             
-            <!-- Page 1 -->
-            <div class="page">
-                <div class="page-content">
-                    <p>Once upon a time, there was a lonely girl who found herself waiting at a train station, uncertain of what lay ahead. She had spent many nights feeling like a passenger in her own life, watching the world move around her while she remained stuck in place.</p>
-                    
-                    <p>She clutched her bag tightly, staring at the tracks. She had been told to wait here, but deep down, she knew no one was coming.</p>
-                    
-                    <!-- SVG placeholder instead of external image -->
-                    <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" class="page-image">
-                        <rect width="300" height="200" fill="#e6f7ff"/>
-                        <rect x="0" y="150" width="300" height="50" fill="#ccc"/>
-                        <rect x="20" y="145" width="260" height="5" fill="#555"/>
-                        <rect x="20" y="120" width="260" height="3" fill="#777"/>
-                        <!-- Girl silhouette -->
-                        <ellipse cx="80" cy="120" rx="15" ry="20" fill="#9370DB" opacity="0.8"/>
-                        <rect x="75" y="140" width="10" height="30" fill="#9370DB" opacity="0.8"/>
-                        <!-- Bench -->
-                        <rect x="60" y="170" width="50" height="5" fill="#8b4513"/>
-                        <rect x="65" y="175" width="5" height="15" fill="#8b4513"/>
-                        <rect x="100" y="175" width="5" height="15" fill="#8b4513"/>
-                        <!-- Train -->
-                        <rect x="200" y="125" width="100" height="30" fill="#4682b4"/>
-                        <rect x="180" y="135" width="20" height="20" fill="#2f4f4f"/>
-                        <circle cx="190" cy="165" r="8" fill="#333"/>
-                        <circle cx="210" cy="165" r="8" fill="#333"/>
-                        <circle cx="260" cy="165" r="8" fill="#333"/>
-                        <circle cx="280" cy="165" r="8" fill="#333"/>
-                    </svg>
-                    
-                    <div class="page-number">1</div>
-                </div>
+            <div class="page-number">3</div>
+        </div>
+        
+        <!-- Page 4 -->
+        <div class="page" id="page-6">
+            <p>One day, a mysterious box arrived for the girl.</p>
+            
+            <p>"Surely, this will be a meaningful gift," she thought.</p>
+            
+            <p>But when she opened it, inside was not a grand romantic gesture, but a half-hearted attempt wrapped in Amazon packaging, hastily selected from Rick's collection.</p>
+            
+            <div class="illustration illustration-4">
+                <div style="position: absolute; width: 80px; height: 60px; background-color: #f9a602; top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
+                <div style="position: absolute; width: 40px; height: 30px; background-color: #f9d71c; opacity: 0.8; top: 40%; left: 50%; transform: translate(-50%, -50%);"></div>
+                <div style="position: absolute; width: 30px; height: 50px; background-color: #9370DB; opacity: 0.8; bottom: 20px; left: 20%; border-radius: 10px 10px 0 0;"></div>
+                <div style="position: absolute; width: 20px; height: 20px; background-color: #ff5252; opacity: 0.7; top: 30%; left: 30%; border-radius: 50%; animation: float 3s infinite ease-in-out;"></div>
+                <div style="position: absolute; width: 15px; height: 15px; background-color: #4682b4; opacity: 0.7; top: 25%; right: 30%; animation: float 2.5s infinite ease-in-out;"></div>
+                <div style="position: absolute; font-size: 16px; color: #333; top: 50%; left: 50%; transform: translate(-50%, -50%);">AMAZON</div>
             </div>
             
-            <!-- Page 2 -->
-            <div class="page">
-                <div class="page-content">
-                    <p>Deep within an enchanted land, there existed a magical wardrobe kept by a man named Rick. This wasn't just any closet—it was filled with gifts originally meant for someone else, only to be repurposed at the last minute.</p>
-                    
-                    <p>A children's book meant for ages 4-8? A Halloween robe from a failed romance? Rick's collection of second-hand gifts grew with each relationship.</p>
-                    
-                    <!-- SVG placeholder instead of external image -->
-                    <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" class="page-image">
-                        <rect width="300" height="200" fill="#f5f0ff"/>
-                        <!-- Gift Closet -->
-                        <rect x="100" y="40" width="100" height="140" fill="#5a9367"/>
-                        <rect x="110" y="50" width="80" height="120" fill="#7aa688"/>
-                        <rect x="105" y="50" width="5" height="120" fill="#5a9367"/>
-                        <rect x="190" y="50" width="5" height="120" fill="#5a9367"/>
-                        <circle cx="185" cy="110" r="3" fill="#f9d71c"/>
-                        <!-- Gifts -->
-                        <rect x="120" y="60" width="15" height="15" fill="#f9a602" stroke="#333"/>
-                        <rect x="145" y="65" width="20" height="20" fill="#ff5252" stroke="#333"/>
-                        <rect x="130" y="90" width="25" height="10" fill="#4682b4" stroke="#333"/>
-                        <rect x="125" y="110" width="30" height="20" fill="#9370DB" stroke="#333"/>
-                        <rect x="160" y="100" width="20" height="30" fill="#f9d71c" stroke="#333"/>
-                        <!-- Girl looking at wardrobe -->
-                        <ellipse cx="50" cy="120" rx="15" ry="20" fill="#9370DB" opacity="0.8"/>
-                        <rect x="45" y="140" width="10" height="30" fill="#9370DB" opacity="0.8"/>
-                        <!-- Glow around wardrobe -->
-                        <rect x="100" y="40" width="100" height="140" fill="#f9d71c" opacity="0.2"/>
-                    </svg>
-                    
-                    <div class="page-number">2</div>
-                </div>
+            <div class="page-number">4</div>
+        </div>
+        
+        <!-- Page 5 -->
+        <div class="page" id="page-7">
+            <p>Rick, the keeper of the wardrobe, watched over his collection with a strange sort of pride. He smiled and offered her a drink.</p>
+            
+            <p>The options? A glass of vodka or a glass of carrot juice. No mixers, no compromise.</p>
+            
+            <p>She stared at the choices, wondering if this was a metaphor for their entire relationship.</p>
+            
+            <div class="illustration illustration-5">
+                <div style="position: absolute; width: 120px; height: 20px; background-color: #d88c02; border-radius: 50%; top: 60%; left: 50%; transform: translate(-50%, -50%);"></div>
+                <div style="position: absolute; width: 20px; height: 40px; background-color: #f5f5f5; opacity: 0.8; top: 40%; left: 40%; transform: translateX(-50%);"></div>
+                <div style="position: absolute; width: 10px; height: 10px; background-color: #f5f5f5; opacity: 0.8; top: 30%; left: 40%; transform: translateX(-50%);"></div>
+                <div style="position: absolute; font-size: 8px; color: #333; top: 45%; left: 40%; transform: translateX(-50%);">VODKA</div>
+                <div style="position: absolute; width: 8px; height: 40px; background-color: #ff5252; top: 40%; left: 60%; transform: translateX(-50%);"></div>
+                <div style="position: absolute; width: 20px; height: 20px; background-color: #4CAF50; top: 30%; left: 60%; transform: translateX(-50%); clip-path: polygon(50% 0%, 0% 100%, 100% 100%);"></div>
+                <div style="position: absolute; width: 30px; height: 50px; background-color: #ff8f80; opacity: 0.8; bottom: 20px; right: 20%; border-radius: 10px 10px 0 0;"></div>
+                <div style="position: absolute; font-size: 20px; color: #333; top: 40%; right: 25%;">?</div>
             </div>
             
-            <!-- Page 3 -->
-            <div class="page">
-                <div class="page-content">
-                    <p>There were shimmering jewels, mysterious packages wrapped in golden paper, and trinkets that whispered secrets of their past owners. But not all gifts in the wardrobe were truly meant for the ones who received them.</p>
-                    
-                    <p>Some had been carefully chosen. Others... repurposed.</p>
-                    
-                    <!-- SVG placeholder instead of external image -->
-                    <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" class="page-image">
-                        <rect width="300" height="200" fill="#f5f0ff"/>
-                        <!-- Ghost wardrobe -->
-                        <rect x="80" y="30" width="140" height="150" fill="#7aa688" opacity="0.9"/>
-                        <rect x="90" y="40" width="120" height="130" fill="#fff" opacity="0.7"/>
-                        <!-- Bottles -->
-                        <rect x="100" y="50" width="15" height="30" fill="#f9a602" opacity="0.8"/>
-                        <rect x="120" y="60" width="15" height="30" fill="#ff5252" opacity="0.8"/>
-                        <rect x="145" y="50" width="15" height="30" fill="#4682b4" opacity="0.8"/>
-                        <rect x="165" y="60" width="15" height="30" fill="#9370DB" opacity="0.8"/>
-                        <!-- Ghost -->
-                        <path d="M220,100 Q220,70 200,70 Q180,70 180,100 L180,130 Q190,120 200,130 Q210,120 220,130 Z" fill="#fff" stroke="#f5f5f5"/>
-                        <circle cx="190" cy="90" r="3" fill="#333"/>
-                        <circle cx="210" cy="90" r="3" fill="#333"/>
-                        <!-- Hot dog -->
-                        <ellipse cx="140" cy="120" rx="30" ry="10" fill="#f9a602"/>
-                        <rect x="110" y="115" width="60" height="10" rx="5" fill="#ff5252"/>
-                        <!-- Sparkles -->
-                        <circle cx="90" cy="50" r="3" fill="#f9d71c"/>
-                        <circle cx="170" cy="40" r="3" fill="#f9d71c"/>
-                        <circle cx="200" cy="60" r="3" fill="#f9d71c"/>
-                        <circle cx="120" cy="30" r="3" fill="#f9d71c"/>
-                    </svg>
-                    
-                    <div class="page-number">3</div>
-                </div>
+            <div class="page-number">5</div>
+        </div>
+        
+        <!-- Page 6 -->
+        <div class="page" id="page-8">
+            <p>Rick believed in the magic of gifts, but he had forgotten how to give from the heart. He was a man of habits, of patterns, of rituals that seemed meaningful on the surface but often left something hollow beneath them.</p>
+            
+            <p>She sipped the drink, the strange combination of flavors lingering on her tongue, and wondered: Was this a gift? Or just something given?</p>
+            
+            <div class="illustration illustration-6">
+                <div style="position: absolute; width: 100px; height: 130px; background-color: #5a9367; top: 35px; right: 30%;"></div>
+                <div style="position: absolute; width: 80px; height: 110px; background-color: #7aa688; top: 45px; right: 30%; margin-left: 10px;"></div>
+                <div style="position: absolute; width: 30px; height: 50px; background-color: #333; opacity: 0.8; bottom: 50px; left: 30%; border-radius: 10px 10px 0 0;"></div>
+                <div style="position: absolute; width: 20px; height: 40px; background-color: #ff5252; opacity: 0.7; top: 40%; left: 20%;"></div>
+                <div style="position: absolute; width: 30px; height: 10px; background-color: #f9a602; top: 40%; right: 35%;"></div>
+                <div style="position: absolute; width: 30px; height: 5px; background-color: #ff5252; top: 40%; right: 35%; transform: translateY(2.5px);"></div>
             </div>
             
-            <!-- Page 4 -->
-            <div class="page">
-                <div class="page-content">
-                    <p>One day, a mysterious box arrived for the girl.</p>
-                    
-                    <p>"Surely, this will be a meaningful gift," she thought.</p>
-                    
-                    <p>But when she opened it, inside was not a grand romantic gesture, but a half-hearted attempt wrapped in Amazon packaging, hastily selected from Rick's collection.</p>
-                    
-                    <!-- SVG placeholder instead of external image -->
-                    <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" class="page-image">
-                        <rect width="300" height="200" fill="#e6f7ff"/>
-                        <!-- Amazon box -->
-                        <rect x="120" y="100" width="80" height="60" fill="#f9a602"/>
-                        <path d="M120,100 L160,70 L240,70 L200,100 Z" fill="#d88c02"/>
-                        <path d="M200,100 L240,70 L240,130 L200,160 Z" fill="#b57401"/>
-                        <path d="M120,100 L120,160 L200,160 L200,100 Z" fill="#f9a602"/>
-                        <!-- Girl -->
-                        <ellipse cx="80" cy="120" rx="15" ry="20" fill="#9370DB" opacity="0.8"/>
-                        <rect x="75" y="140" width="10" height="30" fill="#9370DB" opacity="0.8"/>
-                        <!-- Magical items floating from box -->
-                        <circle cx="160" cy="60" r="10" fill="#ff5252" opacity="0.7"/>
-                        <rect x="180" cy="50" width="15" height="15" fill="#4682b4" opacity="0.7"/>
-                        <path d="M140,40 Q140,30 150,30 Q160,30 160,40 L160,50 Q150,45 140,50 Z" fill="#fff" opacity="0.7"/>
-                        <rect x="170" cy="40" width="20" height="10" fill="#9370DB" opacity="0.7"/>
-                        <!-- Sparkles -->
-                        <circle cx="130" cy="50" r="3" fill="#f9d71c"/>
-                        <circle cx="190" cy="60" r="3" fill="#f9d71c"/>
-                        <circle cx="150" cy="30" r="3" fill="#f9d71c"/>
-                    </svg>
-                    
-                    <div class="page-number">4</div>
-                </div>
+            <div class="page-number">6</div>
+        </div>
+        
+        <!-- Page 7 -->
+        <div class="page" id="page-9">
+            <p>Among Rick's treasures was a mysterious Halloween robe, one that seemed to pass from hand to hand, whispering secrets of its former owners.</p>
+            
+            <p>"Take it," he said, placing it over her shoulders as if it had always belonged to her.</p>
+            
+            <p>Had it, though? Or had it once wrapped around someone else, gifted in another moment of fleeting affection?</p>
+            
+            <div class="illustration illustration-7">
+                <div style="position: absolute; width: 0; height: 0; border-left: 50px solid transparent; border-right: 50px solid transparent; border-bottom: 100px solid #333; top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
+                <div style="position: absolute; width: 30px; height: 50px; background-color: #ff8f80; opacity: 0.8; bottom: 20px; left: 20%; border-radius: 10px 10px 0 0;"></div>
+                <div style="position: absolute; width: 30px; height: 50px; background-color: #f9a602; opacity: 0.8; bottom: 20px; right: 20%; border-radius: 10px 10px 0 0;"></div>
+                <div style="position: absolute; font-size: 20px; color: #333; top: 30%; left: 25%;">?</div>
+                <div style="position: absolute; font-size: 20px; color: #333; top: 30%; right: 25%;">?</div>
+                <div style="position: absolute; font-size: 12px; color: #333; top: 10px; width: 100%; text-align: center;">The Traveling Halloween Robe?</div>
             </div>
             
-            <!-- Page 5 -->
-            <div class="page">
-                <div class="page-content">
-                    <p>Rick, the keeper of the wardrobe, watched over his collection with a strange sort of pride. He smiled and offered her a drink.</p>
-                    
-                    <p>The options? A glass of vodka or a glass of carrot juice. No mixers, no compromise.</p>
-                    
-                    <p>She stared at the choices, wondering if this was a metaphor for their entire relationship.</p>
-                    
-                    <!-- SVG placeholder instead of external image -->
-                    <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" class="page-image">
-                        <rect width="300" height="200" fill="#e6f7ff"/>
-                        <!-- Table -->
-                        <ellipse cx="150" cy="120" rx="60" ry="20" fill="#d88c02"/>
-                        <rect x="145" y="120" width="10" height="50" fill="#b57401"/>
-                        <!-- Vodka bottle -->
-                        <rect x="120" y="70" width="20" height="40" fill="#f5f5f5" opacity="0.8"/>
-                        <rect x="125" y="60" width="10" height="10" fill="#f5f5f5" opacity="0.8"/>
-                        <text x="130" y="90" font-family="Arial" font-size="6" fill="#333" text-anchor="middle">VODKA</text>
-                        <!-- Carrot -->
-                        <path d="M180,70 L170,110" stroke="#ff5252" stroke-width="8"/>
-                        <path d="M180,70 L185,75 L182,85" stroke="#4CAF50" stroke-width="2"/>
-                        <path d="M180,70 L175,75 L172,85" stroke="#4CAF50" stroke-width="2"/>
-                        <!-- Glasses -->
-                        <path d="M130,100 L120,120 L140,120 Z" fill="#f5f5f5" opacity="0.5"/>
-                        <rect x="120" y="120" width="20" height="5" fill="#f5f5f5" opacity="0.5"/>
-                        <path d="M180,100 L170,120 L190,120 Z" fill="#ff5252" opacity="0.5"/>
-                        <rect x="170" y="120" width="20" height="5" fill="#ff5252" opacity="0.5"/>
-                        <!-- Girl -->
-                        <ellipse cx="220" cy="120" rx="15" ry="20" fill="#ff8f80" opacity="0.8"/>
-                        <rect x="215" y="140" width="10" height="30" fill="#ff8f80" opacity="0.8"/>
-                        <text x="220" y="120" font-family="Arial" font-size="10" fill="#333" text-anchor="middle">?</text>
-                    </svg>
-                    
-                    <div class="page-number">5</div>
-                </div>
+            <div class="page-number">7</div>
+        </div>
+        
+        <!-- Page 8 -->
+        <div class="page" id="page-10">
+            <p>The robe carried history, but she wasn't sure she wanted to be part of its lineage.</p>
+            
+            <p>One day, a beautiful princess from Canada appeared, dazzling the kingdom with her charm. Unlike the girl, the Canadian princess was untouched by Rick's peculiar gift-giving habits.</p>
+            
+            <div class="illustration illustration-8">
+                <div style="position: absolute; width: 0; height: 0; border-left: 40px solid transparent; border-right: 40px solid transparent; border-bottom: 80px solid #d4bfff; top: 30%; right: 30%;"></div>
+                <div style="position: absolute; width: 40px; height: 40px; background-color: #f9d71c; top: 20%; right: 35%; border-radius: 50%;"></div>
+                <div style="position: absolute; width: 30px; height: 50px; background-color: #ff8f80; opacity: 0.8; bottom: 20px; left: 30%; border-radius: 10px 10px 0 0;"></div>
+                <div style="position: absolute; width: 30px; height: 15px; background-color: #ff5252; bottom: 70px; left: 30%;"></div>
+                <div style="position: absolute; font-size: 12px; color: #333; top: 30%; left: 50%; transform: translateX(-50%);">Canadian Princess</div>
+                <div style="position: absolute; width: 20px; height: 20px; background-color: #f9d71c; opacity: 0.8; top: 20%; left: 20%; border-radius: 50%; animation: float 3s infinite ease-in-out;"></div>
+                <div style="position: absolute; width: 15px; height: 15px; background-color: #f9d71c; opacity: 0.8; top: 30%; right: 20%; border-radius: 50%; animation: float 2.5s infinite ease-in-out;"></div>
             </div>
             
-            <!-- Continue with more pages following the same pattern -->
+            <div class="page-number">8</div>
+        </div>
+        
+        <!-- Page 9 -->
+        <div class="page" id="page-11">
+            <p>The princess was everything Rick admired—radiant, untouchable, a dream wrapped in soft golden light.</p>
             
-            <!-- Page 6 -->
-            <div class="page">
-                <div class="page-content">
-                    <p>Rick believed in the magic of gifts, but he had forgotten how to give from the heart. He was a man of habits, of patterns, of rituals that seemed meaningful on the surface but often left something hollow beneath them.</p>
-                    
-                    <p>She sipped the drink, the strange combination of flavors lingering on her tongue, and wondered: Was this a gift? Or just something given?</p>
-                    
-                    <!-- SVG placeholder -->
-                    <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" class="page-image">
-                        <rect width="300" height="200" fill="#f5f0ff"/>
-                        <!-- Man with wardrobe -->
-                        <rect x="150" y="50" width="100" height="130" fill="#5a9367"/>
-                        <rect x="160" y="60" width="80" height="110" fill="#7aa688"/>
-                        <!-- Man -->
-                        <ellipse cx="120" cy="100" rx="15" ry="20" fill="#333" opacity="0.8"/>
-                        <rect x="115" y="120" width="10" height="50" fill="#777" opacity="0.8"/>
-                        <!-- Carrot juice pouring -->
-                        <rect x="90" y="80" width="20" height="40" fill="#ff5252" opacity="0.7"/>
-                        <path d="M100,120 L100,150" stroke="#ff5252" stroke-width="4" opacity="0.7"/>
-                        <path d="M90,80 L110,80 L110,70 L90,70 Z" fill="#d88c02"/>
-                        <!-- Hot dogs in the wardrobe -->
-                        <ellipse cx="180" cy="80" rx="15" ry="5" fill="#f9a602"/>
-                        <rect x="165" y="77" width="30" height="5" rx="2" fill="#ff5252"/>
-                        <ellipse cx="200" cy="100" rx="15" ry="5" fill="#f9a602"/>
-                        <rect x="185" y="97" width="30" height="5" rx="2" fill="#ff5252"/>
-                        <ellipse cx="190" cy="120" rx="15" ry="5" fill="#f9a602"/>
-                        <rect x="175" y="117" width="30" height="5" rx="2" fill="#ff5252"/>
-                    </svg>
-                    
-                    <div class="page-number">6</div>
-                </div>
+            <p>The girl noticed how differently Rick behaved around the princess. Suddenly, his gifts to the princess were thoughtful, original, carefully chosen.</p>
+            
+            <p>And in that moment, the gifts that once held meaning for the girl felt different.</p>
+            
+            <div class="illustration illustration-9">
+                <div style="position: absolute; width: 50px; height: 70px; background-color: #fff; left: 50%; top: 40%; transform: translateX(-50%); border-radius: 25px 25px 0 0;"></div>
+                <div style="position: absolute; width: 6px; height: 6px; background-color: #333; left: 45%; top: 50%;"></div>
+                <div style="position: absolute; width: 6px; height: 6px; background-color: #333; left: 55%; top: 50%;"></div>
+                <div style="position: absolute; width: 30px; height: 50px; background-color: #9370DB; opacity: 0.8; bottom: 20px; left: 20%; border-radius: 10px 10px 0 0;"></div>
+                <div style="position: absolute; width: 30px; height: 50px; background-color: #f9a602; opacity: 0.8; bottom: 20px; right: 20%; border-radius: 10px 10px 0 0;"></div>
+                <div style="position: absolute; width: 20px; height: 20px; background-color: #f9d71c; opacity: 0.8; top: 20%; left: 30%; border-radius: 50%; animation: float 3s infinite ease-in-out;"></div>
+                <div style="position: absolute; width: 20px; height: 20px; background-color: #f9d71c; opacity: 0.8; top: 30%; right: 30%; border-radius: 50%; animation: float 2.5s infinite ease-in-out;"></div>
             </div>
             
-            <!-- Page 7 -->
-            <div class="page">
-                <div class="page-content">
-                    <p>Among Rick's treasures was a mysterious Halloween robe, one that seemed to pass from hand to hand, whispering secrets of its former owners.</p>
-                    
-                    <p>"Take it," he said, placing it over her shoulders as if it had always belonged to her.</p>
-                    
-                    <p>Had it, though? Or had it once wrapped around someone else, gifted in another moment of fleeting affection?</p>
-                    
-                    <!-- SVG placeholder -->
-                    <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" class="page-image">
-                        <rect width="300" height="200" fill="#f9f0e6"/>
-                        <!-- Halloween robe -->
-                        <path d="M150,40 L120,140 L180,140 Z" fill="#333"/>
-                        <path d="M150,40 L120,90 L120,140" fill="none" stroke="#444" stroke-width="2"/>
-                        <path d="M150,40 L180,90 L180,140" fill="none" stroke="#444" stroke-width="2"/>
-                        <!-- Children around robe -->
-                        <ellipse cx="70" cy="140" rx="10" ry="15" fill="#ff8f80" opacity="0.8"/>
-                        <rect x="65" y="155" width="10" height="25" fill="#9370DB" opacity="0.8"/>
-                        <ellipse cx="230" cy="140" rx="10" ry="15" fill="#f9a602" opacity="0.8"/>
-                        <rect x="225" y="155" width="10" height="25" fill="#555" opacity="0.8"/>
-                        <!-- Question marks -->
-                        <text x="70" y="130" font-family="Arial" font-size="15" fill="#333" text-anchor="middle">?</text>
-                        <text x="230" y="130" font-family="Arial" font-size="15" fill="#333" text-anchor="middle">?</text>
+            <div class="page-number">9</div>
+        </div>
+        
+        <!-- Page 10 -->
+        <div class="page" id="page-12">
+            <p>She looked at the wardrobe again. Had any of this ever been truly hers?</p>
+            
+            <p>Hot dogs began dancing in her mind, twirling, shouting "It's the Thought That Counts!" as they spun in the air.</p>
+            
+            <p>Yet, deep down, she wondered—was it really?</p>
+            
+            <div class="illustration illustration-10">
+                <div style="position: absolute; width: 200px; height: 30px; background-color: #fff; top: 30%; left: 50%; transform: translate(-50%, -50%); border-radius: 15px; border: 2px solid #ff5252; display: flex; align-items: center; justify-content: center;">
+                    <span style="font-family: 'Bubblegum Sans', cursive; color: #333; font-size: 16px;">It's the Thought That Counts!</span>
+                </div>
+                <div style="position: absolute; width: 30px; height: 10px; background-color: #f9a602; top: 60%; left: 30%;">
+                    <div style="position: absolute; width: 30px; height: 5px; background-color: #ff5252; top: 0; left: 0; transform: translateY(2.5px);
