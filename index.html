@@ -101,7 +101,7 @@
             justify-content: space-between;
             padding: 15px 40px;
             background-color: #f0e6ff;
-            border-top: 1px solid #d4bfff;
+            border-bottom: 1px solid #d4bfff;
         }
         
         .nav-button {
@@ -161,6 +161,13 @@
 </head>
 <body>
     <div class="book-container">
+        <!-- Navigation - Now at the top -->
+        <div class="navigation">
+            <button class="nav-button" id="prev-button">Previous</button>
+            <div class="page-indicator">Page <span id="current-page">1</span> of <span id="total-pages">16</span></div>
+            <button class="nav-button" id="next-button">Next</button>
+        </div>
+        
         <!-- Cover Page -->
         <div class="page cover active" id="page-cover">
             <div class="title">The Vodka, The Carrot Juice, and The Gift Wardrobe</div>
@@ -365,13 +372,6 @@
             
             <div class="page-number">14</div>
         </div>
-        
-        <!-- Navigation -->
-        <div class="navigation">
-            <button class="nav-button" id="prev-button">Previous</button>
-            <div class="page-indicator">Page <span id="current-page">1</span> of <span id="total-pages">16</span></div>
-            <button class="nav-button" id="next-button">Next</button>
-        </div>
     </div>
 
     <script>
@@ -381,9 +381,11 @@
             const prevButton = document.getElementById('prev-button');
             const nextButton = document.getElementById('next-button');
             const currentPageSpan = document.getElementById('current-page');
+            const totalPagesSpan = document.getElementById('total-pages');
             let currentPageIndex = 0;
             
             // Initialize
+            totalPagesSpan.textContent = pages.length;
             updateButtonStates();
             
             // Previous button click
