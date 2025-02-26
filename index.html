@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Vodka, The Carrot Juice, and The Gift Wardrobe</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Bubblegum+Sans&display=swap');
+        
+        body {
+            font-family: 'Raleway', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f5ff;
+            color: #333;
+            line-height: 1.5;
+        }
+        
+        .book {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .page {
+            min-height: 500px;
+            padding: 30px;
+            page-break-after: always;
+            border-bottom: 1px dashed #ddd;
+            position: relative;
+        }
+        
+        .cover {
+            background-color: #6b4c8f;
+            color: white;
+            padding: 60px 30px;
+            text-align: center;
+            background-image: linear-gradient(45deg, #6b4c8f 0%, #9370DB 100%);
+        }
+        
+        .title {
+            font-family: 'Bubblegum Sans', cursive;
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            font-size: 20px;
+            font-style: italic;
+            margin-bottom: 40px;
+        }
+        
+        h2 {
+            font-family: 'Bubblegum Sans', cursive;
+            color: #6b4c8f;
+            margin-top: 0;
+            font-size: 28px;
+        }
+        
+        p {
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .dedication, .authors-note {
+            font-style: italic;
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .page-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+            margin: 20px 0;
+            display: block;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .epilogue {
+            background-color: #f5f0ff;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .page-number {
+            position: absolute;
+            bottom: 15px;
+            right: 30px;
+            color: #999;
+            font-size: 12px;
+        }
+        
+        .print-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #6b4c8f;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            z-index: 1000;
+        }
+        
+        @media print {
+            body {
+                background-color: white;
+            }
+            
+            .book {
+                box-shadow: none;
+                max-width: 100%;
+            }
+            
+            .page {
+                page-break-after: always;
+                border-bottom: none;
+            }
+            
+            .print-button {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button" onclick="window.print()">Print / Save as PDF</button>
+    
+    <div class="book">
+        <!-- Cover Page -->
+        <div class="page cover">
+            <div class="title">The Vodka, The Carrot Juice, and The Gift Wardrobe</div>
+            <div class="subtitle">A Whimsical Tale of Enchanted Robes, Mysterious Gifts, and the Curious Case of a Wardrobe Full of Surprises</div>
+            
+            <img class="page-image" src="https://imgur.com/G8YRYhY.png" alt="Book cover - The Vodka, the Carrot Juice, and the Gift Wardrobe">
+        </div>
+        
+        <!-- Dedication -->
+        <div class="page dedication">
+            <h2>Dedication</h2>
+            <p>For everyone who has ever received a suspiciously re-gifted present.</p>
+            <p>To those who have accepted carrot juice when they deserved champagne.</p>
+            <p>To the ones who were left waiting at the train station but eventually found their own way home.</p>
+            
+            <div class="page-number">i</div>
+        </div>
+        
+        <!-- Author's Note -->
+        <div class="page authors-note">
+            <h2>Author's Note</h2>
+            <p>This story is based on real events. Unfortunately.</p>
+            <p>May you never receive a gift from the magical re-gifting closet.</p>
+            <p>No hot dogs were harmed in the making of this book.</p>
+            
+            <div class="page-number">ii</div>
+        </div>
+        
+        <!-- Page 1 -->
+        <div class="page">
+            <p>Once upon a time, there was a lonely girl who found herself waiting at a train station, uncertain of what lay ahead. She had spent many nights feeling like a passenger in her own life, watching the world move around her while she remained stuck in place.</p>
+            
+            <p>She clutched her bag tightly, staring at the tracks. She had been told to wait here, but deep down, she knew no one was coming.</p>
+            
+            <img class="page-image" src="https://imgur.com/HmUB5wH.png" alt="Girl waiting at train station">
+            
+            <div class="page-number">1</div>
+        </div>
+        
+        <!-- Page 2 -->
+        <div class="page">
+            <p>Deep within an enchanted land, there existed a magical wardrobe kept by a man named Rick. This wasn't just any closet—it was filled with gifts originally meant for someone else, only to be repurposed at the last minute.</p>
+            
+            <p>A children's book meant for ages 4-8? A Halloween robe from a failed romance? Rick's collection of second-hand gifts grew with each relationship.</p>
+            
+            <img class="page-image" src="https://imgur.com/shaM3wX.png" alt="The Gift Closet with girl and glowing wardrobe">
+            
+            <div class="page-number">2</div>
+        </div>
+        
+        <!-- Page 3 -->
+        <div class="page">
+            <p>There were shimmering jewels, mysterious packages wrapped in golden paper, and trinkets that whispered secrets of their past owners. But not all gifts in the wardrobe were truly meant for the ones who received them.</p>
+            
+            <p>Some had been carefully chosen. Others... repurposed.</p>
+            
+            <img class="page-image" src="https://imgur.com/2It0iQk.png" alt="Magical wardrobe with bottles and ghost">
+            
+            <div class="page-number">3</div>
+        </div>
+        
+        <!-- Page 4 -->
+        <div class="page">
+            <p>One day, a mysterious box arrived for the girl.</p>
+            
+            <p>"Surely, this will be a meaningful gift," she thought.</p>
+            
+            <p>But when she opened it, inside was not a grand romantic gesture, but a half-hearted attempt wrapped in Amazon packaging, hastily selected from Rick's collection.</p>
+            
+            <img class="page-image" src="https://imgur.com/QpGlQMS.png" alt="Girl with magical Amazon box">
+            
+            <div class="page-number">4</div>
+        </div>
+        
+        <!-- Page 5 -->
+        <div class="page">
+            <p>Rick, the keeper of the wardrobe, watched over his collection with a strange sort of pride. He smiled and offered her a drink.</p>
+            
+            <p>The options? A glass of vodka or a glass of carrot juice. No mixers, no compromise.</p>
+            
+            <p>She stared at the choices, wondering if this was a metaphor for their entire relationship.</p>
+            
+            <img class="page-image" src="https://imgur.com/nU4jXh4.png" alt="Vodka and carrot juice with confused girl">
+            
+            <div class="page-number">5</div>
+        </div>
+        
+        <!-- Page 6 -->
+        <div class="page">
+            <p>Rick believed in the magic of gifts, but he had forgotten how to give from the heart. He was a man of habits, of patterns, of rituals that seemed meaningful on the surface but often left something hollow beneath them.</p>
+            
+            <p>She sipped the drink, the strange combination of flavors lingering on her tongue, and wondered: Was this a gift? Or just something given?</p>
+            
+            <img class="page-image" src="https://imgur.com/6Adf3Xz.png" alt="Man with gift wardrobe pouring carrot juice">
+            
+            <div class="page-number">6</div>
+        </div>
+        
+        <!-- Page 7 -->
+        <div class="page">
+            <p>Among Rick's treasures was a mysterious Halloween robe, one that seemed to pass from hand to hand, whispering secrets of its former owners.</p>
+            
+            <p>"Take it," he said, placing it over her shoulders as if it had always belonged to her.</p>
+            
+            <p>Had it, though? Or had it once wrapped around someone else, gifted in another moment of fleeting affection?</p>
+            
+            <img class="page-image" src="https://imgur.com/5W6fWXR.png" alt="The Traveling Halloween Robe">
+            
+            <div class="page-number">7</div>
+        </div>
+        
+        <!-- Page 8 -->
+        <div class="page">
+            <p>The robe carried history, but she wasn't sure she wanted to be part of its lineage.</p>
+            
+            <p>One day, a beautiful princess from Canada appeared, dazzling the kingdom with her charm. Unlike the girl, the Canadian princess was untouched by Rick's peculiar gift-giving habits.</p>
+            
+            <img class="page-image" src="https://imgur.com/bHNTG4h.png" alt="Canadian princess with castle">
+            
+            <div class="page-number">8</div>
+        </div>
+        
+        <!-- Page 9 -->
+        <div class="page">
+            <p>The princess was everything Rick admired—radiant, untouchable, a dream wrapped in soft golden light.</p>
+            
+            <p>The girl noticed how differently Rick behaved around the princess. Suddenly, his gifts to the princess were thoughtful, original, carefully chosen.</p>
+            
+            <p>And in that moment, the gifts that once held meaning for the girl felt different.</p>
+            
+            <img class="page-image" src="https://imgur.com/TDdfY9I.png" alt="Ghostly figure with children and pumpkins">
+            
+            <div class="page-number">9</div>
+        </div>
+        
+        <!-- Page 10 -->
+        <div class="page">
+            <p>She looked at the wardrobe again. Had any of this ever been truly hers?</p>
+            
+            <p>Hot dogs began dancing in her mind, twirling, shouting "It's the Thought That Counts!" as they spun in the air.</p>
+            
+            <p>Yet, deep down, she wondered—was it really?</p>
+            
+            <img class="page-image" src="https://imgur.com/petpleL.png" alt="Dancing hot dogs with Its the Thought That Counts banner">
+            
+            <div class="page-number">10</div>
+        </div>
+        
+        <!-- Page 11 -->
+        <div class="page">
+            <p>The girl, realizing her worth, knew she deserved more than recycled magic.</p>
+            
+            <p>So there she sat at the train station, waiting for Rick who had promised to see her off. The minutes ticked by, turning into hours.</p>
+            
+            <p>She had spent so much time hoping for love when all she really needed was to leave—with or without a proper goodbye.</p>
+            
+            <img class="page-image" src="https://imgur.com/In397a7.png" alt="The Great Escape - girl at train station">
+            
+            <div class="page-number">11</div>
+        </div>
+        
+        <!-- Page 12 -->
+        <div class="page">
+            <p>In the distance, a train appeared. Rick was nowhere to be seen.</p>
+            
+            <p>She closed her eyes, took a deep breath, and stepped forward into a world of her own making.</p>
+            
+            <p>As she boarded the train alone, the weight of the past slipped from her shoulders like a cloak she no longer needed.</p>
+            
+            <img class="page-image" src="https://imgur.com/In397a7.png" alt="Train arriving at station">
+            
+            <div class="page-number">12</div>
+        </div>
+        
+        <!-- Page 13 -->
+        <div class="page">
+            <p>In her imagination, a parade of hot dogs waved tiny flags that said, "You Did It."</p>
+            
+            <p>And for the first time in a long time, she knew she had.</p>
+            
+            <img class="page-image" src="https://imgur.com/TDdfY9I.png" alt="Hot dog parade finale with You Did It signs">
+            
+            <div class="page-number">13</div>
+        </div>
+        
+        <!-- Epilogue -->
+        <div class="page epilogue">
+            <h2>Epilogue: A Life Well Lived</h2>
+            
+            <p>Later, she sipped a glass of wine, her cat lounging nearby.</p>
+            
+            <p>She thought about the Canadian princess, wondering if she too would eventually discover the true nature of Rick's gift wardrobe.</p>
+            
+            <p>On the table, a postcard she had written to herself read: "We Knew You'd Make It."</p>
+            
+            <p>And for the first time, she truly believed it.</p>
+            
+            <img class="page-image" src="https://imgur.com/petpleL.png" alt="Girl happy in new life with cat and wine">
+            
+            <p><strong>The End</strong></p>
+            
+            <div class="page-number">14</div>
+        </div>
+    </div>
+    
+    <script>
+        // This ensures images load properly
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.page-image');
+            images.forEach(img => {
+                img.onerror = function() {
+                    this.src = this.src.replace('.png', '.jpg');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
